@@ -61,7 +61,6 @@ lightGallery(document.getElementById('post-bg'), {
 });
 window.addEventListener('message', (e) => {
       // 安全校验：只接受来自你站点的消息
-      if (e.origin !== 'https://lggyx.netlify.app') return
       if (e.data?.type !== 'THEME_SYNC') return
     
       const btn = document.getElementById('color-mode')
