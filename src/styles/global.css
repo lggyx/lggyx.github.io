@@ -322,14 +322,19 @@ pre code { background: none; padding: 0; font-size: inherit; }
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; gap: 20px; }
   .hero h1 { font-size: 44px; }
-  .chapter-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 0; }
+  /* 手机端章节入口保持两列：一列到底要滚很久，两列更接近
+     Anthropic Research 的紧凑横排观感 */
+  .chapter-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 0; }
   .chapter-grid > a { border-left: none; padding: 0; }
 }
 @media (max-width: 600px) {
   .container { padding: 0 20px; }
   .hero h1 { font-size: 36px; }
   .post h1 { font-size: 30px; }
-  .chapter-grid { grid-template-columns: 1fr; }
+  /* 保持两列：393px 下每列约 170px，章节名 + 描述放得下，
+     单列会让 7 个章节把首页拉得很长 */
+  .chapter-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+  .chapter-grid > a { padding: 0; }
   .post-chapter, .ch { display: none; }
 }
 

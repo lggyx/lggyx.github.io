@@ -1,0 +1,98 @@
+---
+/**
+ * 数学公式渲染：KaTeX 客户端渲染。
+ *
+ * 为什么需要：22 篇文章含 LaTeX 行内/块级公式（蓝桥杯题面，
+ * 如 $N$、$1 \leq N,K \leq 10^5$），迁移后一直是字面量。
+ *
+ * 为什么客户端渲染而不是构建期：
+ *   Astro 7 用 Sätteri 引擎，构建期数学插件的接入方式与旧版
+ *   remark-math + rehype-katex 不同；全站仅 35 篇、公式密度不高，
+ *   客户端渲染代价可忽略，且 katex 走本地 vendor 目录（不依赖 CDN）。
+ *
+ * 安全约束：
+ *   - 只处理 .post-content 内的文本节点，**绝不进 pre/code**
+ *     （代码里的 $ 是 shell/PHP 变量，渲染会毁掉代码示例）。
+ *   - render 失败保留原文，不抛错。
+ */
+---
+
+{/* KaTeX 库与样式：本地 vendor，不依赖 CDN */}
+<link rel="stylesheet" href="/vendor/katex/katex.min.css" />
+<script is:inline src="/vendor/katex/katex.min.js"></script>
+
+<script>
+  function renderMath() {
+    const katex = window.katex;
+    const root = document.querySelector('.post-content');
+    if (!katex || !root) return;
+
+    let count = 0;
+
+    // 只在「非代码」的文本节点里找公式。
+    // TreeWalker 逐个文本节点处理，遇到 pre/code 子树直接 REJECT。
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const p = node.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        // 必须用 closest 查**整条祖先链**：Shiki 高亮的结构是
+        // pre > code > span > span > ... > 文本，最内层文本的 parent
+        // 是 span，只查直接父元素会漏掉，代码里的 $ 就会被当成公式渲染
+        // （实测漏了 172 处，会毁掉 Java/Python 代码示例）。
+        if (p.closest('pre, code, script, style, kbd, samp')) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        if (p.closest('.katex')) return NodeFilter.FILTER_REJECT;
+        return node.nodeValue.includes('$') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      },
+    });
+
+    // 先收集再处理：边遍历边改 DOM 会让 walker 失效
+    const targets = [];
+    while (walker.nextNode()) targets.push(walker.currentNode);
+
+    for (const node of targets) {
+      const text = node.nodeValue;
+      // 切分出 块级 $$...$$ 与 行内 $...$
+      const parts = text.split(/(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g);
+      if (parts.length === 1) continue;
+
+      const frag = document.createDocumentFragment();
+      let changed = false;
+
+      for (const part of parts) {
+        if (!part) continue;
+        const isBlock = part.startsWith('$$') && part.endsWith('$$') && part.length > 4;
+        const isInline = !isBlock && part.startsWith('$') && part.endsWith('$') && part.length > 2;
+
+        if (isBlock || isInline) {
+          const tex = isBlock ? part.slice(2, -2) : part.slice(1, -1);
+          const span = document.createElement('span');
+          try {
+            katex.render(tex, span, {
+              displayMode: isBlock,
+              throwOnError: false,
+              strict: false,
+              output: 'html',
+            });
+            frag.appendChild(span);
+            count++;
+            changed = true;
+          } catch {
+            frag.appendChild(document.createTextNode(part));
+          }
+        } else {
+          frag.appendChild(document.createTextNode(part));
+        }
+      }
+
+      if (changed) node.parentNode.replaceChild(frag, node);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderMath);
+  } else {
+    renderMath();
+  }
+</script>

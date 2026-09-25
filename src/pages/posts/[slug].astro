@@ -5,6 +5,7 @@ import { chapterMeta } from '../../content.config';
 import { tagSlug } from '../../lib/tags';
 import Toc from '../../components/Toc.astro';
 import ReadingAids from '../../components/ReadingAids.astro';
+import MathRenderer from '../../components/MathRenderer.astro';
 
 // 静态生成所有文章页：/posts/<slug>/
 export async function getStaticPaths() {
@@ -50,6 +51,7 @@ function shortTitle(t: string) {
 
 <Base title={`${post.data.title} — lggyx 的博客`}>
   <ReadingAids />
+  <MathRenderer />
 
   <article class="post">
     <!-- 面包屑：细线层级，不用斜杠堆叠 -->
