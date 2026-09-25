@@ -382,8 +382,7 @@ and features
 
 [获取 Typora](https://typoraio.cn/) / [帮助改进我们的文档](https://github.com/typora/wiki-website)
 
-[← 下一篇 【WinForm】琉璃猫开发计划](/2024/11/29/WinForm-RuriCatPlan/)
+[← 下一篇 【WinForm】琉璃猫开发计划](/posts/winform-ruricatplan/)
 
-[【MySql】配置项说明 上一篇 →](/2024/08/01/MySql-Doc/)
+[【MySql】配置项说明 上一篇 →](/posts/mysql-doc/)
 
-∧ [≡](#toc-div)

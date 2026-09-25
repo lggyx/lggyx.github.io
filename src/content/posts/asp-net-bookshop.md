@@ -217,8 +217,7 @@ MySQL提供程序：在Common类库中实现或集成MySQL数据库提供程序�
 | jingjing | 普通用户 | jingjing |
 | bobo | VIP用户 | 123456 |
 
-[← 下一篇 【蓝桥杯】国赛知识梳理](/2024/05/24/DSA-KnowledgeOrganization/)
+[← 下一篇 【蓝桥杯】国赛知识梳理](/posts/dsa-knowledgeorganization/)
 
-[【蓝桥杯】进阶-状态压缩动态规划的典型题型深入分析 上一篇 →](/2024/05/06/DSA-DynamicProgrammingType/)
+[【蓝桥杯】进阶-状态压缩动态规划的典型题型深入分析 上一篇 →](/posts/dsa-dynamicprogrammingtype/)
 
-∧ [≡](#toc-div)

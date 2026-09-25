@@ -64,8 +64,7 @@ Django 支持四个主要数据库（PostgreSQL，MySQL，Oracle 和 SQLite）�
 
 [Django框架完全指南：从入门到高级应用-腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/2396500)
 
-[← 下一篇 【Gitee】配置云图库](/2024/07/31/Gitee-ImgWarehouse/)
+[← 下一篇 【Gitee】配置云图库](/posts/gitee-imgwarehouse/)
 
-[【Python】PyQt入门 上一篇 →](/2024/07/17/Python-PyQtBase/)
+[【Python】PyQt入门 上一篇 →](/posts/python-pyqtbase/)
 
-∧ [≡](#toc-div)

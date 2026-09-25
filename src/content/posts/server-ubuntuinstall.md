@@ -151,8 +151,7 @@ wget -O install.sh https://download.bt.cn/install/install-ubuntu_6.0.sh && sudo 
 curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh && sudo bash quick_start.sh
 ```
 
-[← 下一篇 【Python】Kivy入门](/2024/07/09/Python-KivyBase/)
+[← 下一篇 【Python】Kivy入门](/posts/python-kivybase/)
 
-[【蓝桥杯】国赛知识梳理 上一篇 →](/2024/05/24/DSA-KnowledgeOrganization/)
+[【蓝桥杯】国赛知识梳理 上一篇 →](/posts/dsa-knowledgeorganization/)
 
-∧ [≡](#toc-div)

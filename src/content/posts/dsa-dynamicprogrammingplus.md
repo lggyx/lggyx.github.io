@@ -696,8 +696,7 @@ print(dp[n])
 | 背包问题 | [健身-算法赛](https://www.lanqiao.cn/problems/5130/learning/) |
 | 背包问题 | [包子凑数](https://www.lanqiao.cn/problems/98/learning/) |
 
-[← 下一篇 【蓝桥杯】进阶-状态压缩动态规划的典型题型深入分析](/2024/05/06/DSA-DynamicProgrammingType/)
+[← 下一篇 【蓝桥杯】进阶-状态压缩动态规划的典型题型深入分析](/posts/dsa-dynamicprogrammingtype/)
 
-[【JavaScript】基础语法详解 上一篇 →](/2024/04/17/JavaScript-BaseStudy/)
+[【JavaScript】基础语法详解 上一篇 →](/posts/javascript-basestudy/)
 
-∧ [≡](#toc-div)

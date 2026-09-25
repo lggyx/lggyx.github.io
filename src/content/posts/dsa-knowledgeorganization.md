@@ -2667,8 +2667,7 @@ print(n-1,ans)
 
 ![image-20240526132045604](/images/DSA-KnowledgeOrganization/image-20240526132045604.png)
 
-[← 下一篇 【服务器】Ubuntu安装部署](/2024/07/09/Server-UbuntuInstall/)
+[← 下一篇 【服务器】Ubuntu安装部署](/posts/server-ubuntuinstall/)
 
-[【Asp.Net】BookShop说明文档 上一篇 →](/2024/05/22/Asp-Net-BookShop/)
+[【Asp.Net】BookShop说明文档 上一篇 →](/posts/asp-net-bookshop/)
 
-∧ [≡](#toc-div)

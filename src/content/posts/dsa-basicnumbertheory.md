@@ -347,8 +347,7 @@ for i in range(a, b+1):
             print(p[j], end='')
             if k [15 届蓝桥杯 14 天省赛冲刺营 1 期 - 简单数论 - 蓝桥云课 (lanqiao.cn)](https://www.lanqiao.cn/courses/31015/learning/?id=1927004&compatibility=false)
 
-[← 下一篇 【蓝桥杯】组合数学](/2024/03/21/DSA-Combinatorics/)
+[← 下一篇 【蓝桥杯】组合数学](/posts/dsa-combinatorics/)
 
-[【蓝桥杯】图论入门 上一篇 →](/2024/03/19/DSA-IntroductionToGraphTheory/)
+[【蓝桥杯】图论入门 上一篇 →](/posts/dsa-introductiontographtheory/)
 
-∧ [≡](#toc-div)

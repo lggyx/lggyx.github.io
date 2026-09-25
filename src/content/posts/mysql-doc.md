@@ -49,8 +49,7 @@ FLUSH PRIVILEGES; #刷新权限
 
 原文链接：[https://blog.csdn.net/AppleII/article/details/140136984](https://blog.csdn.net/AppleII/article/details/140136984)
 
-[← 下一篇 【MarkDown】图表基本语法](/2024/11/29/MarkDown-ChartBase/)
+[← 下一篇 【MarkDown】图表基本语法](/posts/markdown-chartbase/)
 
-[【Gitee】配置云图库 上一篇 →](/2024/07/31/Gitee-ImgWarehouse/)
+[【Gitee】配置云图库 上一篇 →](/posts/gitee-imgwarehouse/)
 
-∧ [≡](#toc-div)

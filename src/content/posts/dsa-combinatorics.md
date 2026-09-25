@@ -232,8 +232,7 @@ $\mathrm{C_{r}^{n}\bmod m=\frac{n!}{r!(n-r)!}\bmod m=(n!\bmod m)((r!)^{-1}\bmod 
 
 用逆计算二项式系数，复杂度是 $O(n)$​ 的。
 
-[← 下一篇 【蓝桥杯】工具函数模板](/2024/03/22/DSA-UtilityFunctionTemplate/)
+[← 下一篇 【蓝桥杯】工具函数模板](/posts/dsa-utilityfunctiontemplate/)
 
-[【蓝桥杯】简单数论 上一篇 →](/2024/03/20/DSA-BasicNumberTheory/)
+[【蓝桥杯】简单数论 上一篇 →](/posts/dsa-basicnumbertheory/)
 
-∧ [≡](#toc-div)

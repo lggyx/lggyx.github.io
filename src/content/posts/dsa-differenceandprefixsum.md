@@ -792,8 +792,7 @@ public class Main {
 
 差分和前缀和是很多思维题的解题技巧，必须要掌握熟练才能拿到简单题目的全部分数。
 
-[← 下一篇 【蓝桥杯】并查集](/2024/03/15/DSA-UnionFind/)
+[← 下一篇 【蓝桥杯】并查集](/posts/dsa-unionfind/)
 
-[【蓝桥杯】枚举法和尺取法 上一篇 →](/2024/03/13/DSA-EnumerationAndBisection/)
+[【蓝桥杯】枚举法和尺取法 上一篇 →](/posts/dsa-enumerationandbisection/)
 
-∧ [≡](#toc-div)

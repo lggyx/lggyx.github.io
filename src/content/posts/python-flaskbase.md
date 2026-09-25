@@ -880,8 +880,7 @@ if __name__ == '__main__':
 
 这种开发满足了基本需求，开发周期短，但是想要好看的页面，可以使用json数据做一个前后端分离或者整合的项目。
 
-[← 下一篇 【Python】PyQt入门](/2024/07/17/Python-PyQtBase/)
+[← 下一篇 【Python】PyQt入门](/posts/python-pyqtbase/)
 
-[【WinForm】NanUI使用 上一篇 →](/2024/07/11/WinForm-NanUI/)
+[【WinForm】NanUI使用 上一篇 →](/posts/winform-nanui/)
 
-∧ [≡](#toc-div)

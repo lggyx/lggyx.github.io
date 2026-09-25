@@ -587,8 +587,7 @@ public class Main {
 
         for(int i=0 ;i并查集的思想非常简单，但是我们也看到了题目有点复杂，稍微一点改变就是另一种方向。并查集代码实现非常简单，但重点还是看对于题目的把握，这个数据结构不仅直接出题目，并且也会杂糅到别的算法里面，所以他的应用非常广泛，需要我们牢牢地掌握。
 
-[← 下一篇 【Python】内置函数](/2024/03/16/Python-BuiltInFunctions/)
+[← 下一篇 【Python】内置函数](/posts/python-builtinfunctions/)
 
-[【蓝桥杯】差分与前缀和 上一篇 →](/2024/03/14/DSA-DifferenceAndPrefixSum/)
+[【蓝桥杯】差分与前缀和 上一篇 →](/posts/dsa-differenceandprefixsum/)
 
-∧ [≡](#toc-div)

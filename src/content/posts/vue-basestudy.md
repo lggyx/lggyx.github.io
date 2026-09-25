@@ -172,8 +172,7 @@ var app = new Vue({
 
 以上就是Vue.js的基础语法介绍。
 
-[← 下一篇 【JavaScript】基础语法详解](/2024/04/17/JavaScript-BaseStudy/)
+[← 下一篇 【JavaScript】基础语法详解](/posts/javascript-basestudy/)
 
-[【WinForm】EntityFramework框架 上一篇 →](/2024/04/10/WinForm-EntityFramework/)
+[【WinForm】EntityFramework框架 上一篇 →](/posts/winform-entityframework/)
 
-∧ [≡](#toc-div)

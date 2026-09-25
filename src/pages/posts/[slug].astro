@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { chapterMeta } from '../../content.config';
+import { tagSlug } from '../../lib/tags';
 import Toc from '../../components/Toc.astro';
 import ReadingAids from '../../components/ReadingAids.astro';
 
@@ -84,7 +85,7 @@ function shortTitle(t: string) {
 
       <div class="post-tags">
         {post.data.tags.map((t) => (
-          <a href={`/tags/${encodeURIComponent(t)}/`} class="tag">#{t}</a>
+          <a href={`/tags/${tagSlug(t)}/`} class="tag">#{t}</a>
         ))}
       </div>
     </header>

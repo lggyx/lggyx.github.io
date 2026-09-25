@@ -168,8 +168,7 @@ class MyWindow : Formium
 
 **4. 生成并运行你的第一个 WinFormium 应用程序**
 
-[← 下一篇 【Python】Flask入门](/2024/07/16/Python-FlaskBase/)
+[← 下一篇 【Python】Flask入门](/posts/python-flaskbase/)
 
-[【Python】Kivy入门 上一篇 →](/2024/07/09/Python-KivyBase/)
+[【Python】Kivy入门 上一篇 →](/posts/python-kivybase/)
 
-∧ [≡](#toc-div)

@@ -597,8 +597,7 @@ if __name__ == '__main__':
 
 本节课举了三个贪心算法的例子进行讲解，贪心算法是算法竞赛中最入门的算法。没接触过感觉很深奥，接触过了也就那样，简单的贪心伸伸手就可以写出来，其实非常简单，大家也不要过分的担心。
 
-[← 下一篇 【蓝桥杯】动态规划](/2024/03/18/DSA-DynamicProgramming/)
+[← 下一篇 【蓝桥杯】动态规划](/posts/dsa-dynamicprogramming/)
 
-[【蓝桥杯】二分算法 上一篇 →](/2024/03/16/DSA-BinarySearchAlgorithm/)
+[【蓝桥杯】二分算法 上一篇 →](/posts/dsa-binarysearchalgorithm/)
 
-∧ [≡](#toc-div)

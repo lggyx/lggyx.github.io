@@ -2260,8 +2260,7 @@ public class Main {
 
 希望大家努力克服，动态规划都学会了还有什么学不会呢。
 
-[← 下一篇 【蓝桥杯】图论入门](/2024/03/19/DSA-IntroductionToGraphTheory/)
+[← 下一篇 【蓝桥杯】图论入门](/posts/dsa-introductiontographtheory/)
 
-[【蓝桥杯】贪心算法 上一篇 →](/2024/03/17/DSA-GreedyAlgorithm/)
+[【蓝桥杯】贪心算法 上一篇 →](/posts/dsa-greedyalgorithm/)
 
-∧ [≡](#toc-div)

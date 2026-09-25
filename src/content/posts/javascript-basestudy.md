@@ -200,8 +200,7 @@ let str = JSON.stringify(person);
 
 本文档涵盖了JavaScript的核心基础语法，掌握这些内容可以开始进行JavaScript开发。
 
-[← 下一篇 【蓝桥杯】进阶-线性动态规划问题&背包问题进阶策略详解](/2024/05/06/DSA-DynamicProgrammingPlus/)
+[← 下一篇 【蓝桥杯】进阶-线性动态规划问题&背包问题进阶策略详解](/posts/dsa-dynamicprogrammingplus/)
 
-[【Vue】基础语法详解 上一篇 →](/2024/04/17/Vue-BaseStudy/)
+[【Vue】基础语法详解 上一篇 →](/posts/vue-basestudy/)
 
-∧ [≡](#toc-div)

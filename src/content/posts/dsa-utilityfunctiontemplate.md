@@ -865,8 +865,7 @@ if __name__=='__main__':
   print(ans)
 ```
 
-[← 下一篇 【蓝桥杯】练习题目汇总](/2024/03/22/DSA-LanqiaoProblemsCollection/)
+[← 下一篇 【蓝桥杯】练习题目汇总](/posts/dsa-lanqiaoproblemscollection/)
 
-[【蓝桥杯】组合数学 上一篇 →](/2024/03/21/DSA-Combinatorics/)
+[【蓝桥杯】组合数学 上一篇 →](/posts/dsa-combinatorics/)
 
-∧ [≡](#toc-div)

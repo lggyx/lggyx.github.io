@@ -1798,8 +1798,7 @@ while q:
         a,b=x+i,y+j
         if 0BFS 是广度优先搜索，是将某节点所有的“枝蔓”加入搜索队列，然后去除队列的首部的节点，重复进行该动作，这样就能由开始状态“一圈一圈的查找”。 BFS 拥有一个性质，那么就是先找到的节点，所经过的步骤一定最短。它一般用于寻找在近的状态，也是一个非常基础的算法，希望大家认真学习。
 
-[← 下一篇 【蓝桥杯】枚举法和尺取法](/2024/03/13/DSA-EnumerationAndBisection/)
+[← 下一篇 【蓝桥杯】枚举法和尺取法](/posts/dsa-enumerationandbisection/)
 
-[【蓝桥杯】递推法与递归法 上一篇 →](/2024/03/11/DSA-RecurrenceAndRecursive/)
+[【蓝桥杯】递推法与递归法 上一篇 →](/posts/dsa-recurrenceandrecursive/)
 
-∧ [≡](#toc-div)

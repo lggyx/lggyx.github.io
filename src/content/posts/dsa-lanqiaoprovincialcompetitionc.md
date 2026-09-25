@@ -843,8 +843,7 @@ ans = sum(vis)
 print(ans)
 ```
 
-[← 下一篇 【蓝桥杯】23年省赛B组](/2024/04/01/DSA-LanqiaoProvincialCompetitionB/)
+[← 下一篇 【蓝桥杯】23年省赛B组](/posts/dsa-lanqiaoprovincialcompetitionb/)
 
-[【蓝桥杯】练习题目汇总 上一篇 →](/2024/03/22/DSA-LanqiaoProblemsCollection/)
+[【蓝桥杯】练习题目汇总 上一篇 →](/posts/dsa-lanqiaoproblemscollection/)
 
-∧ [≡](#toc-div)

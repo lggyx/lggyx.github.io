@@ -4,11 +4,10 @@ import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import { chapterMeta, chapters } from '../../content.config';
 
-// 为每个章节生成静态页；archive 也生成（可通过 URL 访问，但不进主导航）
+// 为每个章节生成静态页；archive 也生成（内容确实归档了两篇，
+// 面包屑会链到它，不能给 404），只是不进主导航
 export async function getStaticPaths() {
-  return chapters
-    .filter((c) => c !== 'archive')
-    .map((chapter) => ({ params: { chapter }, props: { chapter } }));
+  return chapters.map((chapter) => ({ params: { chapter }, props: { chapter } }));
 }
 
 const { chapter } = Astro.props;

@@ -269,8 +269,7 @@ int main(){
 
     for(int i=1;i
 
-[← 下一篇 【蓝桥杯】递推法与递归法](/2024/03/11/DSA-RecurrenceAndRecursive/)
+[← 下一篇 【蓝桥杯】递推法与递归法](/posts/dsa-recurrenceandrecursive/)
 
-[【Hexo】问题解决方案 上一篇 →](/2024/03/10/HexoDebug/)
+【Hexo】问题解决方案（该文章已随 Hexo 站点一并归档，不再提供）
 
-∧ [≡](#toc-div)

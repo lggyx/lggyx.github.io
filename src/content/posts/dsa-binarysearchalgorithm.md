@@ -791,8 +791,7 @@ int main() {
     // 遍历数组查找目标数
     for (i = 0; i 原文链接：[http://t.csdnimg.cn/rbeG1](http://t.csdnimg.cn/rbeG1)
 
-[← 下一篇 【蓝桥杯】贪心算法](/2024/03/17/DSA-GreedyAlgorithm/)
+[← 下一篇 【蓝桥杯】贪心算法](/posts/dsa-greedyalgorithm/)
 
-[【Python】内置函数 上一篇 →](/2024/03/16/Python-BuiltInFunctions/)
+[【Python】内置函数 上一篇 →](/posts/python-builtinfunctions/)
 
-∧ [≡](#toc-div)

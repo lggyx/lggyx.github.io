@@ -246,8 +246,7 @@ if __name__ == '__main__':
 
 ![img](/images/Python-PyQtBase/445074-20200314115449906-304390105.jpg)
 
-[← 下一篇 【Python】Django入门](/2024/07/28/Python-DjangoBase/)
+[← 下一篇 【Python】Django入门](/posts/python-djangobase/)
 
-[【Python】Flask入门 上一篇 →](/2024/07/16/Python-FlaskBase/)
+[【Python】Flask入门 上一篇 →](/posts/python-flaskbase/)
 
-∧ [≡](#toc-div)

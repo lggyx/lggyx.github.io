@@ -1561,8 +1561,7 @@ n = 1
 
 while n * (n - 1) // 2 
 
-[← 下一篇 【WinForm】EntityFramework框架](/2024/04/10/WinForm-EntityFramework/)
+[← 下一篇 【WinForm】EntityFramework框架](/posts/winform-entityframework/)
 
-[【蓝桥杯】23年省赛C组 上一篇 →](/2024/03/31/DSA-LanqiaoProvincialCompetitionC/)
+[【蓝桥杯】23年省赛C组 上一篇 →](/posts/dsa-lanqiaoprovincialcompetitionc/)
 
-∧ [≡](#toc-div)

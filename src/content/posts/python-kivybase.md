@@ -548,7 +548,6 @@ os.environ['KIVY_HOME'] = folder>
 
 Kivy包含的若干个模块，我们将对这些模块一一进行简要说明。下面这幅图是Kivy整个架构的概括图示：
 
-
 ## 核心模块和输入模块
 
 对理解Kivy的设计内涵，模块化和抽象化的思想是至关重要的。我们试图把各种基本的任务进行抽象，比如打开窗口、显示图像和文本、播放音频、从摄像头获取图像、拼写校正等等。我们将这些部分称为**核心**任务。这样也使得API接口用起来比较简单，扩展起来也容易。更重要的是，这种思路可以让Kivy应用在运行的时候，使用各个运行平台所提供的对应功能的API接口。例如，在苹果的MacOS操作系统、Linux操作系统和Windows操作系统中，就都有各自不同的原生API接口提供各种核心功能。所以就有一部分代码，调用这些不同接口中的某一个，一方面与操作系统进行通信，另一方面与Kivy进行交互，起到中间人的角色，我们称之为**核心模块**。针对不同的操作系统平台要使用各自对应的核心模块，这样的好处是达到一种均衡状态，既能够充分利用操作系统提供的功能，又能尽量提高开发效率。（译者注：我的理解是这样大家平时不用针对不同操作系统去学习和使用各自的API，而只要专心使用Kivy的核心模块进行调用就行了。）这也允许用户来自由选择，使用Kivy提供的核心模块，或者直接使用各个操作系统的API接口。此外，由于使用了各个平台所提供的链接库文件，我们大大减小了Kivy发型版本的体积，也使得打包发布更加容易。这有助于将Kivy应用移植到其他平台。比如Android平台上的Kivy应用就体现了这一特性的好处了。
@@ -810,19 +809,15 @@ python main.py
 
 把上面代码中的 $KIVYDIR 替换成你的 Kivy 安装位置。在左边点击标注有 Box Layout 的按钮。 然后将上面的代码粘贴到窗口右侧的编辑器内。
 
-
 然后你就可以看到上图这样的界面了，这个按钮 Button 会占据整个布局[尺寸 `size`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size)的 100%。
 
 修改[`size_hint_x`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_x)/[`size_hint_y`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_y) 为 .5 这就会把[控件 `Widget`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget) 调整为[布局 `layout`](https://kivy.org/docs/api-kivy.uix.layout.html#module-kivy.uix.layout) 的50% [宽度 `width`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.width)/[高度 `height`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.height)。
-
 
 这时候效果如上图所示，虽然我们已经同时指定了 [`size_hint_x`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_x) 和 [`size_hint_y`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_y) 为 .5，但似乎只有对 [`size_hint_x`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_x) 的修改起作用了。这是因为在[盒式布局 `boxlayout`](https://kivy.org/docs/api-kivy.uix.boxlayout.html#module-kivy.uix.boxlayout)中，当[`orientation`](https://kivy.org/docs/api-kivy.uix.boxlayout.html#kivy.uix.boxlayout.BoxLayout.orientation)被设置为竖直方向（vertical） 的时候，[`size_hint_y`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_y) 由布局来控制，而如果[`orientation`](https://kivy.org/docs/api-kivy.uix.boxlayout.html#kivy.uix.boxlayout.BoxLayout.orientation) 被设置为水平方向（horizontal）的时候， [`size_hint_x`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_x) 由布局来控制，所以这些情况手动设定就无效了。 这些受控维度的尺寸，是根据[子控件 `children`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.children) 在 [`盒式布局 boxlayout`](https://kivy.org/docs/api-kivy.uix.boxlayout.html#module-kivy.uix.boxlayout)中的总编号来计算的。在上面的例子中，这个子控件的[`size_hint_y`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_y) 是受控的(.5/.5 = 1)。所以，这里控件就占据了上层布局的整个高度。
 
 接下来咱们再添加一个[按钮 `Button`](https://kivy.org/docs/api-kivy.uix.button.html#kivy.uix.button.Button)到这个 [布局 `layout`](https://kivy.org/docs/api-kivy.uix.layout.html#module-kivy.uix.layout)看看有什么效果。
 
-
 [盒式布局 `boxlayout`](https://kivy.org/docs/api-kivy.uix.boxlayout.html#module-kivy.uix.boxlayout) 默认对其所有的[子控件 `children`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.children)分配了等大的空间。在咱们这个例子里面，比例是50-50，因为有两个[子控件 `children`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.children)。那么接下来咱们就对其中的一个子控件设置一下 size_hint，然后看看效果怎么样。
-
 
 从上图可以看出，如果一个子控件有了一个指定的 [`size_hint`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint)，这就会决定该[控件 `Widget`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget)使用[盒式布局 `boxlayout`](https://kivy.org/docs/api-kivy.uix.boxlayout.html#module-kivy.uix.boxlayout)提供的空间中的多大比例，来作为自己的[尺寸 `size`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size) 。在我们这个例子中，第一个[按钮 `Button`](https://kivy.org/docs/api-kivy.uix.button.html#kivy.uix.button.Button) 的[`size_hint_x`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint_x)设置为了 .5。那么这个控件分配到的空间计算方法如下：
 
@@ -861,7 +856,6 @@ FloatLayout:
 ```
 
 这份代码的输出效果如下图所示：
-
 
 说了半天[`size_hint`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.size_hint)，你不妨自己试试探索一下 [`pos_hint`](https://kivy.org/docs/api-kivy.uix.widget.html#kivy.uix.widget.Widget.pos_hint)，来理解一下这个属性对控件位置的效果。
 
@@ -1095,7 +1089,6 @@ if __name__ == '__main__':
 
 上面这两个应用的效果都如下图所示：
 
-
 在自定义布局类中定义了背景之后，就是要确保在自定义布局的各个实例中使用到这个新特性。
 
 首先，要在**全局上**增加一个图形或者颜色给内置的 Kivy 布局的背景，这就需要将所用布局的默认 Kv 规则进行覆盖。
@@ -1164,7 +1157,6 @@ if __name__ == '__main__':
 ```
 
 效果大概如下图所示：
-
 
 我们已经对网格布局 GridLayout 类的规则进行了覆盖，所以接下来在应用中使用这个类就都会显示那幅图片了。
 
@@ -1376,8 +1368,7 @@ class MyWidget(Widget):
 
 要注意更新指令的方法是更好的选择，因为这样减少了开销，并且避免了创建新指令。
 
-[← 下一篇 【WinForm】NanUI使用](/2024/07/11/WinForm-NanUI/)
+[← 下一篇 【WinForm】NanUI使用](/posts/winform-nanui/)
 
-[【服务器】Ubuntu安装部署 上一篇 →](/2024/07/09/Server-UbuntuInstall/)
+[【服务器】Ubuntu安装部署 上一篇 →](/posts/server-ubuntuinstall/)
 
-∧ [≡](#toc-div)

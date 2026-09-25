@@ -1122,6 +1122,5 @@ console.log("error:" + err);
 }).listen(8001)
 ```
 
-[【WinForm】琉璃猫开发计划 上一篇 →](/2024/11/29/WinForm-RuriCatPlan/)
+[【WinForm】琉璃猫开发计划 上一篇 →](/posts/winform-ruricatplan/)
 
-∧ [≡](#toc-div)

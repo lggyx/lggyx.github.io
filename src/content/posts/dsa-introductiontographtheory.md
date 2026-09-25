@@ -1948,8 +1948,7 @@ public class Main {
         long a=0;
         for (int k = 1; k 
 
-[← 下一篇 【蓝桥杯】简单数论](/2024/03/20/DSA-BasicNumberTheory/)
+[← 下一篇 【蓝桥杯】简单数论](/posts/dsa-basicnumbertheory/)
 
-[【蓝桥杯】动态规划 上一篇 →](/2024/03/18/DSA-DynamicProgramming/)
+[【蓝桥杯】动态规划 上一篇 →](/posts/dsa-dynamicprogramming/)
 
-∧ [≡](#toc-div)

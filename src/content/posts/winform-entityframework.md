@@ -328,8 +328,7 @@ private void button1_Click(object sender, EventArgs e)
 
 ![在这里插入图片描述](/images/WinForm-EntityFramework/34dfb9ef8a084e68bd51bc7166ebf7c8.png)
 
-[← 下一篇 【Vue】基础语法详解](/2024/04/17/Vue-BaseStudy/)
+[← 下一篇 【Vue】基础语法详解](/posts/vue-basestudy/)
 
-[【蓝桥杯】23年省赛B组 上一篇 →](/2024/04/01/DSA-LanqiaoProvincialCompetitionB/)
+[【蓝桥杯】23年省赛B组 上一篇 →](/posts/dsa-lanqiaoprovincialcompetitionb/)
 
-∧ [≡](#toc-div)

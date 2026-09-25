@@ -2902,8 +2902,7 @@ No
 | Python3 | 1s | 256M |
 | Java | 1s | 256M |
 
-[← 下一篇 【蓝桥杯】23年省赛C组](/2024/03/31/DSA-LanqiaoProvincialCompetitionC/)
+[← 下一篇 【蓝桥杯】23年省赛C组](/posts/dsa-lanqiaoprovincialcompetitionc/)
 
-[【蓝桥杯】工具函数模板 上一篇 →](/2024/03/22/DSA-UtilityFunctionTemplate/)
+[【蓝桥杯】工具函数模板 上一篇 →](/posts/dsa-utilityfunctiontemplate/)
 
-∧ [≡](#toc-div)

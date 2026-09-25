@@ -22,8 +22,7 @@ legacy: true
 
 ![image-20241129203804554](/images/Gitee-ImgWarehouse/image-20241129203804554.png)
 
-[← 下一篇 【MySql】配置项说明](/2024/08/01/MySql-Doc/)
+[← 下一篇 【MySql】配置项说明](/posts/mysql-doc/)
 
-[【Python】Django入门 上一篇 →](/2024/07/28/Python-DjangoBase/)
+[【Python】Django入门 上一篇 →](/posts/python-djangobase/)
 
-∧ [≡](#toc-div)

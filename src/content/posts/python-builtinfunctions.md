@@ -447,8 +447,8 @@ print(callable(f))  # True 函数是可以被调用的
 print(dir(tuple))  # 查看元组的方法
 ```
 
-[← 下一篇 【蓝桥杯】二分算法](/2024/03/16/DSA-BinarySearchAlgorithm/)
+[← 下一篇 【蓝桥杯】二分算法](/posts/dsa-binarysearchalgorithm/)
 
-[【蓝桥杯】并查集 上一篇 →](/2024/03/15/DSA-UnionFind/)
+[【蓝桥杯】并查集 上一篇 →](/posts/dsa-unionfind/)
 
 ∧

@@ -807,8 +807,7 @@ public class Main {
 
 希望同学能够独立完成题目进行练习。并且在后面的学习中会多次用到递归与递推设计其他算法。
 
-[← 下一篇 【蓝桥杯】搜索算法](/2024/03/12/DSA-SearchAlgorithms/)
+[← 下一篇 【蓝桥杯】搜索算法](/posts/dsa-searchalgorithms/)
 
-[【蓝桥杯】手算与思维题 上一篇 →](/2024/03/10/DSA-MentalMathAndBrainTeasers/)
+[【蓝桥杯】手算与思维题 上一篇 →](/posts/dsa-mentalmathandbrainteasers/)
 
-∧ [≡](#toc-div)

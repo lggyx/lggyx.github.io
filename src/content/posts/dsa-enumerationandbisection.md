@@ -644,8 +644,7 @@ int main() {
     scanf("%d%d", &n, &m);
     for (int i = 1; i 这个算法通过维护两个指针，实现了在 *O*(*n*) 的时间复杂度内找到最小购票范围的目标。尺取法的思想在滑动窗口的过程中，通过不断调整左右指针来满足特定条件。
 
-[← 下一篇 【蓝桥杯】差分与前缀和](/2024/03/14/DSA-DifferenceAndPrefixSum/)
+[← 下一篇 【蓝桥杯】差分与前缀和](/posts/dsa-differenceandprefixsum/)
 
-[【蓝桥杯】搜索算法 上一篇 →](/2024/03/12/DSA-SearchAlgorithms/)
+[【蓝桥杯】搜索算法 上一篇 →](/posts/dsa-searchalgorithms/)
 
-∧ [≡](#toc-div)

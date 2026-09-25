@@ -580,8 +580,7 @@ public class Main {
 | 取气球（算法赛） | [https://www.lanqiao.cn/problems/17024/learning/](https://www.lanqiao.cn/problems/17024/learning/) |
 | 左孩子右兄弟（21 年省赛） | [https://www.lanqiao.cn/problems/1451/learning/](https://www.lanqiao.cn/problems/1451/learning/) |
 
-[← 下一篇 【Asp.Net】BookShop说明文档](/2024/05/22/Asp-Net-BookShop/)
+[← 下一篇 【Asp.Net】BookShop说明文档](/posts/asp-net-bookshop/)
 
-[【蓝桥杯】进阶-线性动态规划问题&背包问题进阶策略详解 上一篇 →](/2024/05/06/DSA-DynamicProgrammingPlus/)
+[【蓝桥杯】进阶-线性动态规划问题&背包问题进阶策略详解 上一篇 →](/posts/dsa-dynamicprogrammingplus/)
 
-∧ [≡](#toc-div)
