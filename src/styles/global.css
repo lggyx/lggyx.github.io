@@ -431,6 +431,8 @@ pre code { background: none; padding: 0; font-size: inherit; }
 .tag:hover { color: var(--text); border-color: var(--text); }
 
 /* ── 正文 + 右侧 TOC 布局 ── */
+/* 注意：必须显式 min-width:0，否则代码块的 white-space:pre 会把网格列
+   顶宽，手机端实测正文被撑到 2396px（视口仅 393px），整页可横向滚动。 */
 .post-body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 200px;
@@ -438,6 +440,7 @@ pre code { background: none; padding: 0; font-size: inherit; }
   align-items: start;
   margin-top: 32px;
 }
+.post-content { min-width: 0; overflow-wrap: break-word; }
 .post-aside {
   position: sticky;
   top: 32px;
@@ -629,3 +632,17 @@ pre code { background: none; padding: 0; font-size: inherit; }
   }
   .back-to-top { right: 20px; bottom: 24px; }
 }
+
+/* ── 移动端硬约束：防横向溢出 ──
+   实测（393px 视口）代码块/表格把正文撑到 2396px，整页可横滚。
+   pre/table 本身有 overflow-x:auto，但它们的**父容器**必须先被限死，
+   否则子元素的固有宽度会反向撑开 grid/flex 轨道。 */
+.post-content pre,
+.post-content table { max-width: 100%; }
+.post-content img { max-width: 100%; }
+
+/* 长 URL / 无空格文本（常见于旧文里的 CSDN 链接）也要能断行 */
+.post-content a { overflow-wrap: anywhere; }
+
+/* 兜底：任何情况下 body 都不横向滚动 */
+body { overflow-x: hidden; }
