@@ -663,3 +663,19 @@ body { overflow-x: hidden; }
 }
 /* 行内公式过宽时也给容器让位，避免撑破段落 */
 .post-content .katex { max-width: 100%; }
+
+/* ── KaTeX 行内公式超宽：窄屏降级为可滚动块级 ──
+   实测两个数位 DP 公式渲染后 454px / 432px，393px 视口放不下。
+   行内公式直接 overflow 会破坏段落流，所以在窄屏把它们
+   改成 display:block + 自身横向滚动——读者可左右拖动查看。 */
+@media (max-width: 600px) {
+  .post-content .katex {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    vertical-align: middle;
+    /* 细滚动条提示，不占视觉重量 */
+    scrollbar-width: thin;
+  }
+}
