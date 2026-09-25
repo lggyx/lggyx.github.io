@@ -651,3 +651,15 @@ pre code { background: none; padding: 0; font-size: inherit; }
 
 /* 兜底：任何情况下 body 都不横向滚动 */
 body { overflow-x: hidden; }
+
+/* ── KaTeX：手机端长公式不被裁切 ──
+   实测 100 个公式中 2 个超出 393px 右边界。给 .katex 单独允许横向滚动，
+   不影响正常宽度的公式。 */
+.post-content .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 2px 0;
+}
+/* 行内公式过宽时也给容器让位，避免撑破段落 */
+.post-content .katex { max-width: 100%; }
