@@ -1,0 +1,53 @@
+name: 部署博客到 GitHub Pages
+
+# 触发策略：只 push + 手动，绝不加 schedule。
+# 理由：static 博客没有定时构建的需求，发文章才推几次，
+# public 仓库 Actions 不计费，所以不需要、也不应该为它加 cron。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Pages 部署需要的权限集
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个部署，新的取消旧的，避免并发推 Pages
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 构建
+        run: npx astro build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

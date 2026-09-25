@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="关于 — lggyx 的博客">
+  <section class="about">
+    <h1>关于</h1>
+
+    <p>
+      lggyx，也可以叫我<strong>攻城狮伊格</strong>。全栈 AI infra 学习者，
+      目前在按四条主线推进：LLM 原理、推理训练软件栈、GPU 硬件与 kernel、Agent 系统。
+    </p>
+
+    <p>
+      这个博客主要放<strong>技术笔记</strong>——算法备赛的知识点与真题、Python
+      与框架入门、以及一些项目开发记录。文章多为 2024 年的存量内容，已标注
+      <span class="badge">旧文</span>，请注意时效。
+    </p>
+
+    <h2>技术栈</h2>
+    <ul class="stack">
+      <li><strong>主力</strong>Python / TypeScript / Java / Vue 3</li>
+      <li><strong>能用</strong>C# / Node.js / MySQL / Flask / Django / Spring Boot</li>
+      <li><strong>在学</strong>LLM 推理与训练栈、GPU kernel、Agent 系统</li>
+    </ul>
+
+    <h2>在别处找到我</h2>
+    <ul class="links">
+      <li><a href="https://lggyx.vercel.app" target="_blank" rel="noopener">个人网站</a> — 个人经历、项目展示</li>
+      <li><a href="https://github.com/lggyx" target="_blank" rel="noopener">GitHub</a> — 代码与项目</li>
+      <li><a href="https://github.com/lggyx/ai-infra-journey" target="_blank" rel="noopener">ai-infra-journey</a> — AI infra 学习档案</li>
+    </ul>
+
+    <h2>关于这个站点</h2>
+    <p>
+      原 Hexo 博客迁移至 Astro 重建（2026-09）。37 篇旧文中 35 篇完成迁移，
+      日期保留原始发布时间；两篇 Hexo 自身教程因弃用 Hexo 而移除，
+      两篇 Asp.Net / EntityFramework 旧文归入归档。
+    </p>
+  </section>
+</Base>
+
+<style>
+  .about { padding: 32px 0; max-width: 640px; }
+  .about h1 { margin: 0 0 20px; }
+  .about h2 { font-size: 1.15em; margin-top: 32px; }
+  .about p { margin: 0.9em 0; }
+  .stack, .links { padding-left: 1.4em; }
+  .stack li, .links li { margin: 0.4em 0; }
+</style>

@@ -1,0 +1,89 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { chapterMeta } from '../../content.config';
+
+// 静态生成所有文章页：/posts/<slug>/
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function fullDate(d: Date) {
+  return `${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日`;
+}
+---
+
+<Base title={`${post.data.title} — lggyx 的博客`}>
+  <article class="post">
+    <header class="post-header">
+      <div class="post-meta">
+        <a href={`/chapters/${post.data.chapter}/`} class="post-chapter">
+          {chapterMeta[post.data.chapter].label}
+        </a>
+        <time datetime={post.data.pubDate.toISOString()}>
+          {fullDate(post.data.pubDate)}
+        </time>
+      </div>
+      <h1>
+        {post.data.title}
+        {post.data.legacy && <span class="badge">旧文</span>}
+      </h1>
+      {post.data.description && <p class="post-desc">{post.data.description}</p>}
+      <div class="post-tags">
+        {post.data.tags.map((t) => (
+          <a href={`/tags/${encodeURIComponent(t)}/`} class="tag">#{t}</a>
+        ))}
+      </div>
+    </header>
+
+    <div class="post-content">
+      <Content />
+    </div>
+
+    <footer class="post-footer">
+      <a href="/">← 返回首页</a>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .post { padding: 32px 0; }
+  .post-header { margin-bottom: 28px; }
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .post-chapter {
+    color: var(--text-muted);
+    background: var(--badge-bg);
+    padding: 2px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 12px;
+  }
+  .post-header h1 { margin: 0; font-size: 1.8em; }
+  .post-desc { color: var(--text-muted); margin: 10px 0 0; }
+  .post-tags { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .tag { font-size: 13px; text-decoration: none; color: var(--text-muted); }
+  .tag:hover { color: var(--accent); }
+
+  .post-content { font-size: 16px; }
+  .post-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { chapterMeta, chapters } from '../../content.config';
+
+// 为每个章节生成静态页；archive 也生成（可通过 URL 访问，但不进主导航）
+export async function getStaticPaths() {
+  return chapters
+    .filter((c) => c !== 'archive')
+    .map((chapter) => ({ params: { chapter }, props: { chapter } }));
+}
+
+const { chapter } = Astro.props;
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .filter((p) => p.data.chapter === chapter)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const meta = chapterMeta[chapter];
+---
+
+<Base title={`${meta.label} — lggyx 的博客`}>
+  <section class="chapter">
+    <h1>{meta.label}</h1>
+    <p class="desc">{meta.desc}</p>
+    <p class="count">{posts.length} 篇</p>
+    <PostList posts={posts} />
+  </section>
+</Base>
+
+<style>
+  .chapter { padding: 32px 0; }
+  .chapter h1 { margin: 0 0 6px; }
+  .desc { color: var(--text-muted); margin: 0 0 2px; font-size: 15px; }
+  .count { color: var(--text-muted); font-size: 13px; margin: 0 0 24px; }
+</style>

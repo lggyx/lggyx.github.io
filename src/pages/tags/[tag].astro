@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+
+// 为文章里实际出现的每个标签生成静态页
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags))];
+  return tags.map((tag) => ({ params: { tag }, props: { tag } }));
+}
+
+const { tag } = Astro.props;
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .filter((p) => p.data.tags.includes(tag))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Base title={`#${tag} — lggyx 的博客`}>
+  <section class="tag-page">
+    <h1>#{tag}</h1>
+    <p class="count">{posts.length} 篇</p>
+    <PostList posts={posts} showChapter />
+  </section>
+</Base>
+
+<style>
+  .tag-page { padding: 32px 0; }
+  .tag-page h1 { margin: 0 0 4px; font-size: 1.6em; }
+  .count { color: var(--text-muted); font-size: 13px; margin: 0 0 24px; }
+</style>
