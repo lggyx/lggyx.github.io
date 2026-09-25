@@ -5,17 +5,16 @@ chapter: infra
 tags: ["Markdown"]
 legacy: true
 ---
-# 【MarkDown】图表基本语法
 
 2022 年 9 月 5 日 作者： typora.io
 
-# 前提
+## 前提
 
 Typora 支持一些图表的 Markdown 扩展，要使用此功能，**请首先在首选项面板 → Markdown 部分中启用图表**。
 
 导出为 HTML、PDF、epub、docx 时，这些渲染的图表也会包含在内，但当前版本导出 Markdown 为其他文件格式时不支持图表功能。此外，您还应该注意到，标准 Markdown、CommonMark 或 GFM 不支持图表。因此，我们仍然建议您插入这些图表的图片，而不是直接用 Markdown 编写它们。
 
-# 序列图
+## 序列图
 
 该功能使用[js-sequence](https://bramp.github.io/js-sequence-diagrams/)，它将以下代码块转换为渲染图：
 

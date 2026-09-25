@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯"]
 legacy: true
 ---
-# 【蓝桥杯】搜索算法
 
 ## 深度优先搜索
 

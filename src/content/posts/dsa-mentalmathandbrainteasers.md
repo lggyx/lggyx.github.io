@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯"]
 legacy: true
 ---
-# 【蓝桥杯】手算与思维题
 
 ## 手算与思维题
 

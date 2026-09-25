@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯", "Python"]
 legacy: true
 ---
-# 【蓝桥杯】工具函数模板
 
 ## 内置模板
 

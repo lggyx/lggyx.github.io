@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯"]
 legacy: true
 ---
-# 【蓝桥杯】23年省赛B组
 
 ## 题目总览
 

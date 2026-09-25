@@ -5,7 +5,6 @@ chapter: python
 tags: ["Python"]
 legacy: true
 ---
-# 【Python】内置函数
 
 本文将这68个内置函数综合整理为12大类，正在学习Python基础的读者一定不要错过，建议收藏学习！
 内置函数就是Python给你提供的，拿来直接用的函数，比如print.，input等。

@@ -5,9 +5,8 @@ chapter: python
 tags: ["Python", "Flask"]
 legacy: true
 ---
-# 【Python】Flask入门
 
-# 介绍
+## 介绍
 
 对于springboot+vue、asp.net还是其他一些技术，我们实现网页都需要较长的学习时间，因此，为了快速开发，满足需求，我参考Python的Flask编写了这篇文章。
 
@@ -21,7 +20,7 @@ legacy: true
 
 既然介绍说完了，那就开始吧。
 
-# 准备工作
+## 准备工作
 
     在学习Flask之前，你需要具备Python和Html的基本知识，如果没有这方面的知识，可以先去学习一下再回到本文章
     
@@ -39,7 +38,7 @@ pip install flask
 
 安装成功后就可以正式写代码了
 
-# 一、你的第一个Flask应用
+## 一、你的第一个Flask应用
 
 ## 初始化项目
 
@@ -483,7 +482,7 @@ login.html
 
 ![初始化的登录页面](/images/Python-FlaskBase/image-20240716210315287.png)
 
-# 二、HTML模板
+## 二、HTML模板
 
 在一般的 Web 程序里，访问一个地址通常会返回一个包含各类信息的 HTML 页面。
 
@@ -607,7 +606,7 @@ def index():
 
 ![运行截图](/images/Python-FlaskBase/image-20240716214913074.png)
 
-# 三、静态文件
+## 三、静态文件
 
 静态文件（static files）和我们的模板概念相反，指的是内容不需要动态生成的文件。比如图片、CSS 文件和 JavaScript 脚本等。
 
@@ -764,7 +763,7 @@ Google Chrome（Mac）：Command + Shift + R
 
 | --- | --- |
 
-# 四、数据库
+## 四、数据库
 
 ## 使用 SQLAlchemy 操作数据库
 

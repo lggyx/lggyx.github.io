@@ -5,9 +5,8 @@ chapter: algorithms
 tags: ["蓝桥杯"]
 legacy: true
 ---
-# 【蓝桥杯】练习题目汇总
 
-# 门牌制作
+## 门牌制作
 
 ### 题目描述
 
@@ -61,7 +60,7 @@ print(s.count("2"))
 
 可以快速得到结果624，准确又省时间。
 
-# 迷宫
+## 迷宫
 
 ### 题目描述
 
@@ -173,7 +172,7 @@ for i in list(range(10)):
 print(count)
 ```
 
-# 星期一
+## 星期一
 
 ### 题目描述
 
@@ -203,7 +202,7 @@ td=dt2-dt1
 print(td.days//7)
 ```
 
-# 乘积尾零
+## 乘积尾零
 
 ### 题目描述
 
@@ -256,7 +255,7 @@ print(res)
 
 ![图片描述](/images/DSA-LanqiaoProblemsCollection/236f300ccb9673d4fc3b0c7790de774a-0.png)
 
-# 付账问题
+## 付账问题
 
 ### 题目描述
 

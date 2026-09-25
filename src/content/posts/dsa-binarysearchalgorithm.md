@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯"]
 legacy: true
 ---
-# 【蓝桥杯】二分算法
 
 ## 二分查找算法
 

@@ -5,9 +5,8 @@ chapter: frontend
 tags: ["Vue"]
 legacy: true
 ---
-# 【Vue】基础语法详解
 
-# Vue.js 基础语法教程
+## Vue.js 基础语法教程
 
 ## 1. 环境搭建
 

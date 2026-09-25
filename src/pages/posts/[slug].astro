@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { chapterMeta } from '../../content.config';
+import Toc from '../../components/Toc.astro';
+import ReadingAids from '../../components/ReadingAids.astro';
 
 // 静态生成所有文章页：/posts/<slug>/
 export async function getStaticPaths() {
@@ -13,29 +15,73 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+
+// 上一页 / 下一页：按发布时间排序的相邻文章
+const all = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const idx = all.findIndex((p) => p.id === post.id);
+const newer = idx > 0 ? all[idx - 1] : null;   // 更新
+const older = idx < all.length - 1 ? all[idx + 1] : null; // 更早
+
+// 同一章节的相关文章（同标签优先，最多 3 篇）
+const related = (await getCollection('posts', ({ data }) => !data.draft))
+  .filter((p) => p.id !== post.id && p.data.chapter === post.data.chapter)
+  .sort((a, b) => {
+    const sharedA = a.data.tags.filter((t) => post.data.tags.includes(t)).length;
+    const sharedB = b.data.tags.filter((t) => post.data.tags.includes(t)).length;
+    return sharedB - sharedA;
+  })
+  .slice(0, 3);
+
+// 阅读时长：中文约 400 字/分钟
+const raw = post.body ?? '';
+const charCount = raw.replace(/\s/g, '').length;
+const minutes = Math.max(1, Math.round(charCount / 400));
 
 function fullDate(d: Date) {
   return `${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日`;
 }
+function shortTitle(t: string) {
+  return t.length > 18 ? t.slice(0, 18) + '…' : t;
+}
 ---
 
 <Base title={`${post.data.title} — lggyx 的博客`}>
+  <ReadingAids />
+
   <article class="post">
+    <!-- 面包屑：细线层级，不用斜杠堆叠 -->
+    <nav class="crumb">
+      <a href="/">首页</a>
+      <span class="crumb-sep">/</span>
+      <a href={`/chapters/${post.data.chapter}/`}>{chapterMeta[post.data.chapter].label}</a>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-current">正文</span>
+    </nav>
+
     <header class="post-header">
-      <div class="post-meta">
-        <a href={`/chapters/${post.data.chapter}/`} class="post-chapter">
-          {chapterMeta[post.data.chapter].label}
-        </a>
-        <time datetime={post.data.pubDate.toISOString()}>
-          {fullDate(post.data.pubDate)}
-        </time>
-      </div>
       <h1>
         {post.data.title}
         {post.data.legacy && <span class="badge">旧文</span>}
       </h1>
       {post.data.description && <p class="post-desc">{post.data.description}</p>}
+
+      <!-- meta 行：日期 · 章 · 字数 · 阅读时长 -->
+      <div class="post-meta">
+        <time datetime={post.data.pubDate.toISOString()}>{fullDate(post.data.pubDate)}</time>
+        <span class="dot">·</span>
+        <span>{charCount} 字</span>
+        <span class="dot">·</span>
+        <span>约 {minutes} 分钟</span>
+        {post.data.legacy && (
+          <>
+            <span class="dot">·</span>
+            <span class="legacy-note">2024 年旧文，请注意时效</span>
+          </>
+        )}
+      </div>
+
       <div class="post-tags">
         {post.data.tags.map((t) => (
           <a href={`/tags/${encodeURIComponent(t)}/`} class="tag">#{t}</a>
@@ -43,13 +89,60 @@ function fullDate(d: Date) {
       </div>
     </header>
 
-    <div class="post-content">
-      <Content />
+    <!-- 正文 + 右侧 TOC -->
+    <div class="post-body">
+      <div class="post-content" data-post-content>
+        <Content />
+      </div>
+      <aside class="post-aside">
+        <Toc headings={headings} />
+      </aside>
     </div>
 
-    <footer class="post-footer">
-      <a href="/">← 返回首页</a>
-    </footer>
+    <!-- 版权块：细线分隔，不用彩色框 -->
+    <section class="copyright">
+      <div class="copyright-title">版权与转载</div>
+      <p>
+        本文由 <strong>lggyx</strong> 原创，首发于
+        <a href="https://lggyx.github.io" target="_blank" rel="noopener">lggyx.github.io</a>。
+      </p>
+      <p>
+        采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>
+        许可协议：转载请注明出处，非商业使用，相同方式共享。
+      </p>
+    </section>
+
+    <!-- 上一篇 / 下一篇：左右分栏，细线包围 -->
+    <nav class="post-nav">
+      {newer ? (
+        <a href={`/posts/${newer.id}/`} class="post-nav-item prev">
+          <span class="nav-label">← 上一篇</span>
+          <span class="nav-title">{shortTitle(newer.data.title)}</span>
+        </a>
+      ) : <span class="post-nav-item empty" />}
+      {older ? (
+        <a href={`/posts/${older.id}/`} class="post-nav-item next">
+          <span class="nav-label">下一篇 →</span>
+          <span class="nav-title">{shortTitle(older.data.title)}</span>
+        </a>
+      ) : <span class="post-nav-item empty" />}
+    </nav>
+
+    <!-- 相关文章：按同标签数排序 -->
+    {related.length > 0 && (
+      <section class="related">
+        <div class="related-title">相关文章</div>
+        <ul>
+          {related.map((r) => (
+            <li>
+              <a href={`/posts/${r.id}/`}>
+                <span class="related-title-text">{r.data.title}</span>
+                <span class="related-date">{fullDate(r.data.pubDate)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
   </article>
 </Base>
-

@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯"]
 legacy: true
 ---
-# 【蓝桥杯】差分与前缀和
 
 ## 差分与前缀和
 

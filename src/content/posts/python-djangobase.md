@@ -5,9 +5,8 @@ chapter: python
 tags: ["Python", "Django"]
 legacy: true
 ---
-# 【Python】Django入门
 
-# 介绍
+## 介绍
 
 Django 是一个高级的 Python 网络框架，可以快速开发安全和可维护的网站。由经验丰富的开发者构建，Django 负责处理网站开发中麻烦的部分，因此你可以专注于编写应用程序，而无需重新开发。 它是免费和开源的，有活跃繁荣的社区，丰富的文档，以及很多免费和付费的解决方案。
 
@@ -49,7 +48,7 @@ Django 代码编写是遵照设计原则和模式，鼓励创建可维护和可�
 
 Django 是用 Python 编写的，它在许多平台上运行。这意味着你不受任务特定的服务器平台的限制，并且可以在许多种类的 Linux，Windows 和 Mac OsX 上运行应用程序。此外，Django 得到许多网络托管提供商的好评，他们经常提供特定的基础设施和托管 Django 网站的文档。
 
-# 开发环境
+## 开发环境
 
 ## 操作系统
 
@@ -59,9 +58,9 @@ Django web 应用程序能运行在几乎任何可以运行 Python3 的计算机
 
 Django 支持四个主要数据库（PostgreSQL，MySQL，Oracle 和 SQLite），还有一些社区库可以为其他流行的 SQL 和 NOSQL 数据库提供不同级别的支持。
 
-# 安装Django
+## 安装Django
 
-# 初级使用
+## 初级使用
 
 [Django框架完全指南：从入门到高级应用-腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/2396500)
 

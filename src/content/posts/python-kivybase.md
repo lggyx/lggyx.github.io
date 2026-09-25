@@ -5,9 +5,8 @@ chapter: python
 tags: ["Python", "Kivy"]
 legacy: true
 ---
-# 【Python】Kivy入门
 
-# Kivy简介
+## Kivy简介
 
 Kivy是Python的Gui的一种。
 
@@ -17,7 +16,7 @@ Kivy是Python的Gui的一种。
 
 [参考文献](https://cycleuser.gitbooks.io/kivy-guide-chinese/content/00-Kivy-CN.html)
 
-# 安装
+## 安装
 
 **官网原文档链接**
 
@@ -68,7 +67,7 @@ python -m pip install kivy
 set PATH=%PATH%;%cd%\share\sdl2\bin;%cd%\share\glew\bin
 ```
 
-# 基础
+## 基础
 
 [原文地址](https://kivy.org/docs/guide/basic.html)
 
@@ -273,7 +272,7 @@ self.add_widget(self.password)
 
 尝试着重新缩放一下窗口大小，你会发现上面的控件会相对整个窗口的尺寸而自行调整大小，并不需要人为去操作了。这是因为这些控件都使用了默认的尺寸。
 
-# 环境
+## 环境
 
 [英文原文](https://kivy.org/docs/guide/environment.html)
 
@@ -463,7 +462,7 @@ KIVY_BCM_DISPMANX_ID
 
 （译者注：上面0-6分别是不同的显示输出端口，相信很容易看懂，大家探索一下吧。）
 
-# 配置
+## 配置
 
 [英文原文](https://kivy.org/docs/guide/config.html)
 
@@ -541,7 +540,7 @@ os.environ['KIVY_HOME'] = folder>
 
 在[kivy.config](http://kivy.org/docs/api-kivy.config.html#module-kivy.config) 模块中可以看到全部的配置项的解释。
 
-# 架构
+## 架构
 
 [英文原文](https://kivy.org/docs/guide/architecture.html)
 
@@ -676,7 +675,7 @@ def on_touch_down(self, touch):
 
 Title: Kivy Widgets Date: 2017-02-26 Category: Kivy Tags: Python,Kivy
 
-# 控件
+## 控件
 
 [英文原文](https://kivy.org/docs/guide/widgets.html)
 
@@ -1272,7 +1271,7 @@ Kivy 的默认长度单位是像素 pixel，所有的尺寸和位置都用这个
 
 如果你的应用程序要包含多个程序，那可能就需要从一个[屏幕 `Screen`](https://kivy.org/docs/api-kivy.uix.screenmanager.html#kivy.uix.screenmanager.Screen)到另一个[屏幕 `Screen`](https://kivy.org/docs/api-kivy.uix.screenmanager.html#kivy.uix.screenmanager.Screen)提供一个导航的通道。幸运的是，正好有一个[屏幕管理器类`ScreenManager`](https://kivy.org/docs/api-kivy.uix.screenmanager.html#kivy.uix.screenmanager.ScreenManager)，这个类允许你来定义分开的各个屏幕，设置屏幕管理器的[`TransitionBase`](https://kivy.org/docs/api-kivy.uix.screenmanager.html#kivy.uix.screenmanager.TransitionBase)就可以实现从一个屏幕到另一个屏幕的跳转导航。
 
-# 图形
+## 图形
 
 [英文原文](https://kivy.org/docs/guide/graphics.html)
 

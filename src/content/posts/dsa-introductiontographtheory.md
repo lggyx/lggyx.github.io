@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯", "图论"]
 legacy: true
 ---
-# 【蓝桥杯】图论入门
 
 ## 图论
 

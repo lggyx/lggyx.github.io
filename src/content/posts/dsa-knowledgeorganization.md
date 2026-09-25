@@ -5,9 +5,8 @@ chapter: algorithms
 tags: ["蓝桥杯"]
 legacy: true
 ---
-# 【蓝桥杯】国赛知识梳理
 
-# 动态规划
+## 动态规划
 
 ## 基础
 
@@ -2236,7 +2235,7 @@ for i in range(1, n+1):
 print(ans)
 ```
 
-# 图论
+## 图论
 
 ## 基础
 

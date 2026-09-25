@@ -5,9 +5,8 @@ chapter: frontend
 tags: ["JavaScript"]
 legacy: true
 ---
-# 【JavaScript】基础语法详解
 
-# JavaScript 基础语法教程
+## JavaScript 基础语法教程
 
 ## 1. JavaScript简介
 

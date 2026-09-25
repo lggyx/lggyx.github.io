@@ -1,0 +1,33 @@
+---
+/**
+ * 目录（TOC）组件：从渲染后的 HTML 提取 h2/h3 生成层级目录。
+ *
+ * 为什么自己写而不是靠 rehype 插件：只需两级标题、不需要自动插锚链接，
+ * 直接解析 <Content /> 输出更可控，也少一个依赖。
+ */
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+// 只取 h2/h3，深度缩进两级
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+
+const label = (t: string) => t.replace(/[`*_\[\]]/g, '').trim();
+---
+
+{items.length >= 3 && (
+  <nav class="toc" aria-label="目录">
+    <div class="toc-title">目录</div>
+    <ul>
+      {items.map((h) => (
+        <li class={`toc-item toc-depth-${h.depth}`}>
+          <a href={`#${h.slug}`}>{label(h.text)}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

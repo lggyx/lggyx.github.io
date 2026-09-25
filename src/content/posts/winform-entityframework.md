@@ -5,17 +5,16 @@ chapter: archive
 tags: ["C#", "EntityFramework"]
 legacy: true
 ---
-# 【WinForm】EntityFramework框架
 
 [video(video-xcdU9b91-1704040286495)(type-csdn)(url-[https://live.csdn.net/v/embed/355757)(image-https://video-community.csdnimg.cn/vod-84deb4/a090dd94a7e271eebfde0675b3ed0102/snapshots/8ea7d139d04a45018cee00f5941a4830-00004.jpg?auth_key=4857630234-0-0-fd49d3e2a45ced4ff569beca2381b74b)(title-EF框架演示)]](https://live.csdn.net/v/embed/355757)(image-https://video-community.csdnimg.cn/vod-84deb4/a090dd94a7e271eebfde0675b3ed0102/snapshots/8ea7d139d04a45018cee00f5941a4830-00004.jpg?auth_key=4857630234-0-0-fd49d3e2a45ced4ff569beca2381b74b)(title-EF%E6%A1%86%E6%9E%B6%E6%BC%94%E7%A4%BA)%5D)
 
-# 运行环境
+## 运行环境
 
 Visual Studio 2019
 SQL Server
 EntityFramework 6.2.0
 
-# 一、创建项目，编写数据库
+## 一、创建项目，编写数据库
 
 ## 创建一个Windows窗体应用(.NET Framework)
 
@@ -42,7 +41,7 @@ EntityFramework 6.2.0
 
 ![创建成功](/images/WinForm-EntityFramework/274f2968f1bf4abe9ff28dae4d7e297f.png)
 
-# 二、DataGridView绑定数据源
+## 二、DataGridView绑定数据源
 
 ![添加数据库](/images/WinForm-EntityFramework/861af9287cfc46d38d2ed3eb5d876f19.png)下一步，下一步，然后选择连接
 ![在这里插入图片描述](/images/WinForm-EntityFramework/639606538b554ddba521733ebbf2950c.png)下一步，下一步，一直到下图，选中表，点击完成
@@ -54,7 +53,7 @@ EntityFramework 6.2.0
 运行测试，数据显示正常
 ![在这里插入图片描述](/images/WinForm-EntityFramework/a7da9b7137034732945cedc3af2f8d56.png)
 
-# 三、实现添加按钮
+## 三、实现添加按钮
 
 ## 编写代码
 
@@ -118,7 +117,7 @@ private void button1_Click(object sender, EventArgs e)
 
 ![在这里插入图片描述](/images/WinForm-EntityFramework/5d607bca1a624e9ea829b0b7e9e84670.png)![在这里插入图片描述](/images/WinForm-EntityFramework/f51496f5946c47538fdc822a030dc9c8.png)测试没有问题。
 
-# 四、实现删除按钮
+## 四、实现删除按钮
 
 ## 编写代码
 
@@ -155,7 +154,7 @@ private void button1_Click(object sender, EventArgs e)
 
 ![在这里插入图片描述](/images/WinForm-EntityFramework/ed387128824b4eae916a6a9112d5a60f.png)测试没有问题，点击删除删除选中数据，并且刷新数据（原理是重新绑定数据）
 
-# 五、实现修改按钮
+## 五、实现修改按钮
 
 ## 编写代码
 
@@ -245,7 +244,7 @@ private void button1_Click(object sender, EventArgs e)
 
 运行测试没有问题。
 
-# 六、实现查询按钮
+## 六、实现查询按钮
 
 ## 新建表checkname，给下拉框添加数据
 

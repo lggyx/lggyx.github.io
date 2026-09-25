@@ -5,7 +5,6 @@ chapter: infra
 tags: ["MySQL"]
 legacy: true
 ---
-# 【MySql】配置项说明
 
 ![image](/images/MySql-Doc/bd3ad6dc01394e0c26e56a543d8a53b.jpg)
 

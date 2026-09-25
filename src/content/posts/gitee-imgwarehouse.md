@@ -5,7 +5,6 @@ chapter: infra
 tags: ["图床"]
 legacy: true
 ---
-# 【Gitee】配置云图库
 
 ## 配置步骤
 

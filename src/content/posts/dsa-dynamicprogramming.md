@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯", "动态规划"]
 legacy: true
 ---
-# 【蓝桥杯】动态规划
 
 ## 动态规划（Dynamic Programming）
 

@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯", "动态规划"]
 legacy: true
 ---
-# 【蓝桥杯】进阶-线性动态规划问题&背包问题进阶策略详解
 
 ## 1. DP 概述
 

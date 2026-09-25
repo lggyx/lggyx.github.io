@@ -5,9 +5,8 @@ chapter: python
 tags: ["Python", "PyQt"]
 legacy: true
 ---
-# 【Python】PyQt入门
 
-# 1、GUI开发框架简介
+## 1、GUI开发框架简介
 
 ## 1.1 通用开发框架
 
@@ -35,7 +34,7 @@ legacy: true
 
 参考文献：[PyQt完整入门教程](https://www.cnblogs.com/lovesoo/p/12491361.html)
 
-# 2.PyQt环境配置
+## 2.PyQt环境配置
 
 ## 2.1 PyQt5 及 pyqt5-tools 安装
 
@@ -119,7 +118,7 @@ Working directory: $FileDir$
 
 ![image-20240717002938184](/images/Python-PyQtBase/image-20240717002938184.png)
 
-# 3、实例开发
+## 3、实例开发
 
 下面我们以一个简单的城市天气预报为例，演示使用PyQt5开发一个GUI程序的基本流程。
 

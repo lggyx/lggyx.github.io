@@ -5,7 +5,6 @@ chapter: algorithms
 tags: ["蓝桥杯", "动态规划"]
 legacy: true
 ---
-# 【蓝桥杯】进阶-状态压缩动态规划的典型题型深入分析
 
 ## 1. 树上DP概述
 

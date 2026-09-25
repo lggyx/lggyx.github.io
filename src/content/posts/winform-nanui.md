@@ -5,11 +5,10 @@ chapter: desktop
 tags: ["C#", "WinForm", "NanUI"]
 legacy: true
 ---
-# 【WinForm】NanUI使用
 
 ![26847280e3c37174bef437f1b968c97](/images/WinForm-NanUI/26847280e3c37174bef437f1b968c97.jpg)
 
-# NanUI简介
+## NanUI简介
 
 NanUI是WinForm UI库的一种，它可以让应用程序里面内嵌html+css写的页面，可以样式更加多样化。
 
