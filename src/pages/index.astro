@@ -16,29 +16,32 @@ const countByChapter = chapters.reduce<Record<string, number>>((acc, c) => {
   acc[c] = posts.filter((p) => p.data.chapter === c).length;
   return acc;
 }, {});
-
-// 简短的自我介绍（放首页顶部，详情去 about 页）
-const intro = {
-  line1: 'lggyx — 全栈 AI infra 学习者',
-  line2: '这里是我的技术笔记：算法备赛、Python、前端与项目记录。',
-};
 ---
 
-<Base>
-  <section class="intro">
-    <h1>{intro.line1}</h1>
-    <p>{intro.line2}</p>
-    <p class="intro-links">
-      <a href="/about/">关于我</a>
-      <a href="https://lggyx.vercel.app" target="_blank" rel="noopener">个人网站</a>
-    </p>
+<Base current="home">
+  <!-- Hero：左大标题 + 右侧正文（Anthropic Research 页的标志性双栏） -->
+  <section class="hero">
+    <h1>lggyx 的博客</h1>
+    <div>
+      <p class="hero-body">
+        这里是我的技术笔记：算法备赛的知识点与真题、Python
+        与框架入门、以及一些项目开发记录。文章多为 2024 年的存量内容，
+        仅供参考。
+      </p>
+      <div class="hero-links">
+        <a href="/about/">关于我</a>
+        <a href="https://lggyx.vercel.app" target="_blank" rel="noopener">个人网站</a>
+      </div>
+    </div>
   </section>
 
-  <section class="chapters">
+  <!-- 章节入口：5 列横排 + 竖细线分隔，与 Anthropic Research 团队栏同构 -->
+  <section class="chapter-grid">
     {navChapters.map((c) => (
       countByChapter[c] > 0 && (
-        <a href={`/chapters/${c}/`} class="chapter-card">
+        <a href={`/chapters/${c}/`}>
           <span class="chapter-name">{chapterMeta[c].label}</span>
+          <span class="chapter-desc">{chapterMeta[c].desc}</span>
           <span class="chapter-count">{countByChapter[c]} 篇</span>
         </a>
       )
@@ -53,41 +56,3 @@ const intro = {
     <PostList posts={recent} />
   </section>
 </Base>
-
-<style>
-  .intro { padding: 40px 0 28px; }
-  .intro h1 { font-size: 1.9em; margin: 0 0 10px; }
-  .intro p { color: var(--text-muted); margin: 6px 0; }
-  .intro-links { display: flex; gap: 18px; font-size: 14px; margin-top: 12px; }
-
-  .chapters {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 10px;
-    margin: 8px 0 36px;
-  }
-  .chapter-card {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text);
-    background: var(--bg-soft);
-  }
-  .chapter-card:hover { border-color: var(--accent); }
-  .chapter-name { font-weight: 600; font-size: 14px; }
-  .chapter-count { font-size: 12px; color: var(--text-muted); }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
-  .section-head h2 { margin: 0; border: none; font-size: 1.25em; }
-  .more { font-size: 13px; text-decoration: none; color: var(--text-muted); }
-  .more:hover { color: var(--accent); }
-</style>

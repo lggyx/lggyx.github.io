@@ -1,16 +1,24 @@
 ---
-// 全局布局：头部导航 + 内容区 + 页脚
-import { chapterMeta, chapters } from '../content.config';
+// 全局布局：头部导航 + 内容区 + 页脚（Anthropic 风格：细线、大留白、无圆角装饰）
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
+  current?: string; // 当前页 key，用于导航高亮
 }
 
-const { title = 'lggyx 的博客', description = '算法备赛、技术笔记与项目记录' } = Astro.props;
+const {
+  title = 'lggyx 的博客',
+  description = '算法备赛、技术笔记与项目记录',
+  current = '',
+} = Astro.props;
 
-const navChapters = chapters.filter((c) => c !== 'archive');
+const nav = [
+  { key: 'home', label: '首页', href: '/' },
+  { key: 'timeline', label: '时间线', href: '/timeline/' },
+  { key: 'about', label: '关于', href: '/about/' },
+];
 ---
 
 <!doctype html>
@@ -22,16 +30,15 @@ const navChapters = chapters.filter((c) => c !== 'archive');
     <title>{title}</title>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="/" class="logo">lggyx<span class="logo-dot">.</span></a>
-        <nav class="nav">
-          <a href="/">首页</a>
-          <a href="/timeline/">时间线</a>
-          {navChapters.map((c) => (
-            <a href={`/chapters/${c}/`}>{chapterMeta[c].label}</a>
+    <header class="site-nav">
+      <div class="container">
+        <a href="/" class="nav-brand">lggyx</a>
+        <nav class="nav-links">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={current === n.key ? 'page' : undefined}>
+              {n.label}
+            </a>
           ))}
-          <a href="/about/">关于</a>
         </nav>
       </div>
     </header>
@@ -41,81 +48,14 @@ const navChapters = chapters.filter((c) => c !== 'archive');
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-inner">
-        <span>© 2024-2026 lggyx</span>
-        <span class="footer-links">
+      <div class="container">
+        <span>© 2024–2026 lggyx</span>
+        <span>
           <a href="https://github.com/lggyx" target="_blank" rel="noopener">GitHub</a>
+          {' · '}
           <a href="https://lggyx.vercel.app" target="_blank" rel="noopener">个人网站</a>
         </span>
       </div>
     </footer>
   </body>
 </html>
-
-<style>
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .site-header {
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px);
-    z-index: 10;
-  }
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-    gap: 16px;
-  }
-  .logo {
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--text);
-    text-decoration: none;
-    flex-shrink: 0;
-  }
-  .logo-dot { color: var(--accent); }
-  .nav {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-  .nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 14px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    white-space: nowrap;
-  }
-  .nav a:hover {
-    color: var(--text);
-    background: var(--bg-soft);
-  }
-  .site-footer {
-    border-top: 1px solid var(--border);
-    margin-top: 64px;
-    padding: 24px 0;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .footer-links { display: flex; gap: 16px; }
-  .footer-links a { color: var(--text-muted); }
-  @media (max-width: 640px) {
-    .header-inner { height: auto; padding: 10px 20px; flex-direction: column; align-items: flex-start; }
-    .nav { justify-content: flex-start; }
-  }
-</style>
