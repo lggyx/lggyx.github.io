@@ -762,7 +762,6 @@ Google Chrome（Mac）：Command + Shift + R
 
 ![运行截图](/images/Python-FlaskBase/image-20240716222523545.png)
 
-| ![totoro](/./../images/Flask%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/totoro.gif) | ![avatar](/./../images/Flask%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/avatar.png) |
 | --- | --- |
 
 # 四、数据库

@@ -43,7 +43,7 @@ Bob-->Alice: I am good thanks!
 
 | –序列主题：简单 | –序列主题：手 |
 | --- | --- |
-| ![屏幕截图 2021-04-05 23.38.52](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.38.52-1732893726451-61.png) | ![屏幕截图 2021-03-13 23.56.07](/images/MarkDown-ChartBase/js-sequence-hand-1732893726451-63.png) |
+| ![屏幕截图 2021-04-05 23.38.52](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.38.52-1732893726451-61.png) | ![屏幕截图 2021-03-13 23.56.07](/images/MarkDown-ChartBase/js-sequence-hand-1732893726451-63.png) |
 
 # 流程图
 
@@ -212,7 +212,7 @@ requirementDiagram
 ```
 ```
 
-![屏幕截图 2022-09-06 22.03.59](/images/MarkDown-ChartBase/Screen%2520Shot%25202022-09-06%2520at%252022.03.59-1732893726451-75.png)
+![屏幕截图 2022-09-06 22.03.59](/images/MarkDown-ChartBase/Screen%20Shot%202022-09-06%20at%2022.03.59-1732893726451-75.png)
 
 ## Gitgraph 图表/提交流程
 
@@ -236,7 +236,7 @@ gitGraph
 ```
 ```
 
-![屏幕截图 2022-08-19 16.07.24](/images/MarkDown-ChartBase/Screen%2520Shot%25202022-08-19%2520at%252016.07.24-1732893726451-77.png)
+![屏幕截图 2022-08-19 16.07.24](/images/MarkDown-ChartBase/Screen%20Shot%202022-08-19%20at%2016.07.24-1732893726451-77.png)
 
 ## C4 图表（兼容 plantUML）
 
@@ -279,25 +279,25 @@ and features
 
 详情请参阅[https://mermaid.js.org/syntax/timeline.html 。](https://mermaid.js.org/syntax/timeline.html)
 
-![截图 2023-05-10 22.46.25](/images/MarkDown-ChartBase/Screenshot%25202023-05-10%2520at%252022.46.25-1732893726451-84.png)
+![截图 2023-05-10 22.46.25](/images/MarkDown-ChartBase/Screenshot%202023-05-10%20at%2022.46.25-1732893726451-84.png)
 
 ## 象限图
 
 有关详细信息，请参阅[https://mermaid.js.org/syntax/quadrantChart.html](https://mermaid.js.org/syntax/quadrantChart.html) 。
 
-![截图于 2023-08-20 11.53.47](/images/MarkDown-ChartBase/Screenshot%25202023-08-20%2520at%252011.53.47-1732893726451-86.png)
+![截图于 2023-08-20 11.53.47](/images/MarkDown-ChartBase/Screenshot%202023-08-20%20at%2011.53.47-1732893726451-86.png)
 
 ## 桑基图
 
  详情请参阅[https://mermaid.js.org/syntax/sankey.html 。](https://mermaid.js.org/syntax/sankey.html)
 
-![截图于 2023-08-20 11.55.40](/images/MarkDown-ChartBase/Screenshot%25202023-08-20%2520at%252011.55.40-1732893726451-88.png)
+![截图于 2023-08-20 11.55.40](/images/MarkDown-ChartBase/Screenshot%202023-08-20%20at%2011.55.40-1732893726451-88.png)
 
 ## 禅宗UML
 
  详情请参阅[https://mermaid.js.org/syntax/zenuml.html 。](https://mermaid.js.org/syntax/zenuml.html)
 
-![截图 2023-08-29 21.13.14](/images/MarkDown-ChartBase/Screenshot%25202023-08-29%2520at%252021.13.14-1732893726451-90.png)
+![截图 2023-08-29 21.13.14](/images/MarkDown-ChartBase/Screenshot%202023-08-29%20at%2021.13.14-1732893726451-90.png)
 
 请注意，zenuml 不是 mermaid 中的第一类图表，它可能缺少一些功能，例如黑暗主题等。
 
@@ -307,7 +307,7 @@ and features
 
 您现在可以绘制如下图表：
 
-![截图 2023-12-13 19.23.18](/images/MarkDown-ChartBase/Screenshot%25202023-12-13%2520at%252019.23.18-1732893726451-92.png)
+![截图 2023-12-13 19.23.18](/images/MarkDown-ChartBase/Screenshot%202023-12-13%20at%2019.23.18-1732893726451-92.png)
 
 ## 全球美人鱼选项
 
@@ -341,9 +341,9 @@ and features
 
 | CSS | 美人鱼演示 |
 | --- | --- |
-| `:root {--mermaid-theme:dark;}` | ![屏幕截图 2020-12-05 17.08.46](/images/MarkDown-ChartBase/Screen%2520Shot%25202020-12-05%2520at%252017.08.46-1732893726451-94.png) |
-| `:root {--mermaid-theme:neutral;}` | ![屏幕截图 2020-12-05 17.09.42](/images/MarkDown-ChartBase/Screen%2520Shot%25202020-12-05%2520at%252017.09.42-1732893726451-96.png) |
-| `:root {--mermaid-theme:forest;}` | ![屏幕截图 2020-12-05 17.10.11](/images/MarkDown-ChartBase/Screen%2520Shot%25202020-12-05%2520at%252017.10.11-1732893726451-98.png) |
+| `:root {--mermaid-theme:dark;}` | ![屏幕截图 2020-12-05 17.08.46](/images/MarkDown-ChartBase/Screen%20Shot%202020-12-05%20at%2017.08.46-1732893726451-94.png) |
+| `:root {--mermaid-theme:neutral;}` | ![屏幕截图 2020-12-05 17.09.42](/images/MarkDown-ChartBase/Screen%20Shot%202020-12-05%20at%2017.09.42-1732893726451-96.png) |
+| `:root {--mermaid-theme:forest;}` | ![屏幕截图 2020-12-05 17.10.11](/images/MarkDown-ChartBase/Screen%20Shot%202020-12-05%20at%2017.10.11-1732893726451-98.png) |
 
 ### 自动编号
 
@@ -351,7 +351,7 @@ and features
 
 | –美人鱼序列号：关闭 | –美人鱼序列号：on |
 | --- | --- |
-| ![屏幕截图 2021-04-05 23.08.37](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.08.37-1732893726451-102.png) | ![屏幕截图 2021-04-05 23.20.31](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.20.31-1732893726451-100.png) |
+| ![屏幕截图 2021-04-05 23.08.37](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.08.37-1732893726451-102.png) | ![屏幕截图 2021-04-05 23.20.31](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.20.31-1732893726451-100.png) |
 
 ### 流程图曲线
 
@@ -359,19 +359,19 @@ and features
 
 | –mermaid-flowchart-curve：线性； | –mermaid-flowchart-curve：基础 | –美人鱼流程图曲线：自然； | –mermaid-flowchart-curve：步骤； |
 | --- | --- | --- | --- |
-| ![屏幕截图 2021-04-05 23.25.41](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.25.41-1732893726451-104.png) | ![屏幕截图 2021-04-05 23.30.11](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.30.11-1732893726451-106.png) | ![屏幕截图 2021-04-05 23.28.06](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.28.06-1732893726451-108.png) | ![Screen Shot 2021-04-05 at 23.28.52](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.28.52-1732893726451-110.png) |
+| ![屏幕截图 2021-04-05 23.25.41](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.25.41-1732893726451-104.png) | ![屏幕截图 2021-04-05 23.30.11](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.30.11-1732893726451-106.png) | ![屏幕截图 2021-04-05 23.28.06](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.28.06-1732893726451-108.png) | ![Screen Shot 2021-04-05 at 23.28.52](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.28.52-1732893726451-110.png) |
 
 ### 甘特图填充
 
 | –美人鱼–gantt-左填充：75 | –美人鱼–gantt-left-padding：200 |
 | --- | --- |
-| ![Screen Shot 2021-04-05 at 23.33.31](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.33.31-1732893726451-112.png) | ![Screen Shot 2021-04-05 at 23.33.00](/images/MarkDown-ChartBase/Screen%2520Shot%25202021-04-05%2520at%252023.33.00-1732893726451-114.png) |
+| ![Screen Shot 2021-04-05 at 23.33.31](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.33.31-1732893726451-112.png) | ![Screen Shot 2021-04-05 at 23.33.00](/images/MarkDown-ChartBase/Screen%20Shot%202021-04-05%20at%2023.33.00-1732893726451-114.png) |
 
 ## 内联美人鱼配置
 
 您可以`%%{init: [options]}%%`在美人鱼图的第一行添加配置美人鱼的详细信息，如下所示：
 
-![Screen Shot 2022-08-19 at 16.04.36](/images/MarkDown-ChartBase/Screen%2520Shot%25202022-08-19%2520at%252016.04.36-1732893726451-116.png)
+![Screen Shot 2022-08-19 at 16.04.36](/images/MarkDown-ChartBase/Screen%20Shot%202022-08-19%20at%2016.04.36-1732893726451-116.png)
 
 [您可以在https://mermaid-js.github.io/mermaid/#/./directives](https://mermaid-js.github.io/mermaid/#/./directives)找到完整文档。
 
