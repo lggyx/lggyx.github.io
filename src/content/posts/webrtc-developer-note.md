@@ -5,8 +5,6 @@ chapter: media
 tags: ["WebRTC"]
 ---
 
-## WebRTC音视频通话开发教程
-
 ## 1 WebRTC入门
 
 本章内容：
