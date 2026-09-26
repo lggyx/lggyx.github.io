@@ -679,3 +679,75 @@ body { overflow-x: hidden; }
     scrollbar-width: thin;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   氛围层（Anthropic 纸感 + ReactBits 动效）
+   方向已与用户确认：保留米白纸感 + 衬线正文，首页/列表页放开做
+   视觉，文章页正文保持克制长读。
+   ══════════════════════════════════════════════════════════════ */
+
+/* 首页 main 作为背景层的定位父级 */
+main.has-aurora { position: relative; }
+main.has-aurora .page-inner { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════════════════════════════
+   列表交互与滚动渐入（ReactBits FadeContent 思路的 CSS 实现）
+   用户确认：首页/列表页放开做视觉，文章页正文保持克制长读。
+   ══════════════════════════════════════════════════════════════ */
+
+/* 箭头：默认藏在左边距外，hover 滑入——给出「可前往」的暗示 */
+.post-arrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .18s ease, transform .18s ease;
+  flex-shrink: 0;
+  align-self: center;
+}
+.post-item:hover .post-arrow,
+.post-item:focus-visible .post-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 整行 hover：左侧出现一根细竖线（Anthropic 式的克制强调） */
+.post-list li { position: relative; }
+.post-list li::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--text);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform .18s ease;
+}
+.post-list li:hover::before { transform: scaleY(1); }
+
+/* 滚动渐入：IntersectionObserver 加 .in 类；无 JS 时默认可见 */
+.reveal { opacity: 0; transform: translateY(10px); }
+.reveal.in {
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s ease, transform .5s ease;
+  transition-delay: calc(var(--i, 0) * 45ms);
+}
+/* 列表项逐个错峰进场 */
+.post-list li.reveal { opacity: 0; transform: translateY(8px); }
+.post-list li.reveal.in {
+  opacity: 1;
+  transform: none;
+  transition: opacity .45s ease, transform .45s ease;
+  transition-delay: calc(var(--i, 0) * 45ms);
+}
+
+/* 无障碍：用户要求减少动效时全部关掉 */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .post-list li.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .post-arrow { transition: none; }
+  .post-list li::before { transition: none; }
+}

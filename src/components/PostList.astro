@@ -16,8 +16,8 @@ function ym(d: Date) {
 ---
 
 <ul class="post-list">
-  {posts.map((post) => (
-    <li>
+  {posts.map((post, i) => (
+    <li class="reveal" style={`--i:${i}`}>
       <a href={`/posts/${post.id}/`} class="post-item">
         <span class="post-date">{ym(post.data.pubDate)}</span>
         <span class="post-title">
@@ -27,6 +27,12 @@ function ym(d: Date) {
         {showChapter && (
           <span class="post-chapter">{chapterMeta[post.data.chapter].label}</span>
         )}
+        {/* 箭头：hover 时滑入，给出「可前往」的明确暗示 */}
+        <span class="post-arrow" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M3 8h9M8.5 4.5L12 8l-3.5 3.5" />
+          </svg>
+        </span>
       </a>
     </li>
   ))}

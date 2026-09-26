@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { chapterMeta, chapters } from '../content.config';
 import PostList from '../components/PostList.astro';
+import Aurora from '../components/Aurora.astro';
+import Reveal from '../components/Reveal.astro';
 
 // 时间倒序：新文章在前
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
@@ -19,8 +21,11 @@ const countByChapter = chapters.reduce<Record<string, number>>((acc, c) => {
 ---
 
 <Base current="home">
+  <!-- 背景层：ReactBits Aurora 的原生 WebGL2 复刻，压在 #faf9f5 纸感底色上 -->
+  <Aurora colorStops={['#d6cfc0', '#c9b8a4', '#c2ccc0']} opacity={0.6} amplitude={0.9} blend={0.42} />
+  <div class="page-inner">
   <!-- Hero：左大标题 + 右侧正文（Anthropic Research 页的标志性双栏） -->
-  <section class="hero">
+  <section class="hero reveal">
     <h1>lggyx 的博客</h1>
     <div>
       <p class="hero-body">
@@ -36,7 +41,7 @@ const countByChapter = chapters.reduce<Record<string, number>>((acc, c) => {
   </section>
 
   <!-- 章节入口：5 列横排 + 竖细线分隔，与 Anthropic Research 团队栏同构 -->
-  <section class="chapter-grid">
+  <section class="chapter-grid reveal">
     {navChapters.map((c) => (
       countByChapter[c] > 0 && (
         <a href={`/chapters/${c}/`}>
@@ -55,4 +60,6 @@ const countByChapter = chapters.reduce<Record<string, number>>((acc, c) => {
     </div>
     <PostList posts={recent} />
   </section>
+  </div>
+  <Reveal />
 </Base>

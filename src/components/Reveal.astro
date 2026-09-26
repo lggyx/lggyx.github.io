@@ -1,0 +1,78 @@
+---
+/**
+ * 滚动渐入（ReactBits FadeContent 思路的零依赖 CSS 实现）
+ *
+ * 为什么不用 ReactBits 原版：它是 React 组件。这里只需它 5% 的能力——
+ * 元素进入视口时淡入。用 IntersectionObserver 加一个 .in 类就够，
+ * 零依赖、~1KB。
+ *
+ * 两个必须处理的边界：
+ * 1. prefers-reduced-motion → CSS 里已强制可见（.reveal { opacity:1 }）。
+ * 2. 后台标签页：IntersectionObserver 在 document.hidden 时**不回调**。
+ *    若用户从后台标签页打开博客，所有元素会停在 opacity:0 ——内容消失。
+ *    所以 readyState 已 complete 或页面可见时要立即用
+ *    getBoundingClientRect 兜底判定一次，不能只等 IO。
+ */
+
+---
+<script>
+  function setupReveal() {
+    const items = Array.from(document.querySelectorAll('.reveal'));
+    if (!items.length) return;
+
+    // 不支持 IO：直接全部显示，不能让人看不到内容
+    if (!('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('in'));
+      return;
+    }
+
+    const show = (el) => { el.classList.add('in'); };
+
+    // 兜底判定：不依赖 IO，纯用几何 + 页面可见性
+    function flushVisible() {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      for (const el of items) {
+        if (el.classList.contains('in')) continue;
+        const r = el.getBoundingClientRect();
+        // 已经在视口内（含一点下边距余量）就直接显示
+        if (r.top < vh * 0.94 && r.bottom > 0) show(el);
+      }
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+    );
+
+    items.forEach((el) => io.observe(el));
+
+    // 关键：立即兜底一次，覆盖「后台标签页打开」的场景
+    flushVisible();
+
+    // 滚动时也兜底：某些环境 IO 回调会延迟
+    let scheduled = false;
+    window.addEventListener('scroll', () => {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => { flushVisible(); scheduled = false; });
+    }, { passive: true });
+
+    // 页面从后台切回：补一次
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) flushVisible();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupReveal);
+  } else {
+    setupReveal();
+  }
+</script>

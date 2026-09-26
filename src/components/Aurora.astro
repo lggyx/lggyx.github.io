@@ -1,0 +1,228 @@
+---
+/**
+ * Aurora 背景（原生 WebGL2，零依赖）
+ *
+ * 来源：ReactBits 的 Aurora 组件（MIT 许可仓库 DavidHDev/react-bits，
+ * src/content/Backgrounds/Aurora/Aurora.jsx）。原实现依赖 React + OGL，
+ * 这里的 fragment shader 逻辑与原版一致，改用原生 WebGL2 + fetch 加载
+ * 外部 .glsl 文件——博客是 Astro 静态站，为一个背景引整套 React 运行时不划算。
+ *
+ * 为什么 shader 放独立 .glsl 文件而不是内联在 script 里：
+ *   Astro 的 define:vars 会把 script 模板字符串里的真换行序列化成字面 "\n"，
+ *   而 GLSL 的 #version 指令必须跟**真换行**，否则编译静默失败——表现是
+ *   canvas 存在、getError() 为 0、但 0 像素输出（极难排查）。
+ *   走 fetch 让 shader 源保持原样，绕开整个序列化层。
+ *
+ * 设计取向（已与用户确认）：保留 Anthropic 米白纸感 + 衬线正文，
+ * 只补动效/氛围；默认 lightMode，极光压成纸上的淡彩晕染。
+ *
+ * 硬约束：
+ *   - 无 WebGL2 / shader 编译失败 / fetch 失败 → 什么都不做，
+ *     博客不能因为一个背景装饰打不开。
+ *   - prefers-reduced-motion → 只画一帧静态，不进动画循环。
+ *   - 标签页隐藏时暂停 rAF。
+ */
+
+interface Props {
+  /** 三个色标（hex）。默认取纸感的暖灰与极淡的赭/青。 */
+  colorStops?: string[];
+  amplitude?: number;
+  blend?: number;
+  /** 浅色模式：把极光压成纸上的淡彩晕染 */
+  lightMode?: boolean;
+  /** 容器不透明度，便于叠在 #faf9f5 上微调 */
+  opacity?: number;
+}
+
+const {
+  colorStops = ['#c9c2b4', '#b8a99a', '#a8b4a0'],
+  amplitude = 1.0,
+  blend = 0.5,
+  lightMode = true,
+  opacity = 0.55,
+  id = 'aurora-' + Math.random().toString(36).slice(2, 9),
+} = Astro.props;
+---
+
+<div
+  class="aurora-wrap"
+  id={id}
+  aria-hidden="true"
+  data-colorstops={colorStops.join(',')}
+  data-amplitude={amplitude}
+  data-blend={blend}
+  data-lightmode={lightMode ? '1' : '0'}
+  style={`opacity:${opacity}`}
+></div>
+
+<style>
+  /* 背景层：绝对定位铺满，不参与文档流，pointer-events 关掉免得挡链接 */
+  .aurora-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .aurora-wrap canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+</style>
+
+<script define:vars={{ id, initColorStops: colorStops, initAmplitude: amplitude, initBlend: blend, initLightMode: lightMode }}>
+  (async function () {
+    const ctn = document.getElementById(id);
+    if (!ctn) return;
+
+    // ── 1. 取 shader 源（独立文件，保持真换行）──
+    let VERT, FRAG;
+    try {
+      const [v, f] = await Promise.all([
+        fetch('/shaders/aurora.vert.glsl'),
+        fetch('/shaders/aurora.frag.glsl'),
+      ]);
+      if (!v.ok || !f.ok) throw new Error('http ' + v.status + '/' + f.status);
+      VERT = await v.text();
+      FRAG = await f.text();
+    } catch (e) {
+      // 博客不能因为一个背景装饰打不开
+      console.warn('[aurora] shader fetch failed, background disabled:', e.message);
+      return;
+    }
+
+    const canvas = document.createElement('canvas');
+    ctn.appendChild(canvas);
+    const gl = canvas.getContext('webgl2', {
+      alpha: true, antialias: true, premultipliedAlpha: true,
+    });
+    if (!gl) { canvas.remove(); return; }
+
+    // ── 2. 编译 ──
+    function compile(type, src) {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+        console.warn('[aurora] compile failed:', gl.getShaderInfoLog(s));
+        return null;
+      }
+      return s;
+    }
+    const vs = compile(gl.VERTEX_SHADER, VERT);
+    const fs = compile(gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) { canvas.remove(); return; }
+
+    const prog = gl.createProgram();
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      console.warn('[aurora] link failed:', gl.getProgramInfoLog(prog));
+      canvas.remove();
+      return;
+    }
+    gl.useProgram(prog);
+
+    gl.clearColor(0, 0, 0, 0);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    canvas.style.backgroundColor = 'transparent';
+
+    // ── 3. 全屏三角形（比 quad 少一个顶点；uv 用 gl_FragCoord 现算）──
+    const verts = new Float32Array([-1, -1, 3, -1, -1, 3]);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
+    const posLoc = gl.getAttribLocation(prog, 'position');
+    gl.enableVertexAttribArray(posLoc);
+    gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+    const uTime = gl.getUniformLocation(prog, 'uTime');
+    const uAmplitude = gl.getUniformLocation(prog, 'uAmplitude');
+    // vec3 数组：用 "uColorStops[0]" 才稳妥拿得到位置
+    const uColorStops = gl.getUniformLocation(prog, 'uColorStops[0]') ||
+                        gl.getUniformLocation(prog, 'uColorStops');
+    const uResolution = gl.getUniformLocation(prog, 'uResolution');
+    const uBlend = gl.getUniformLocation(prog, 'uBlend');
+    const uLightMode = gl.getUniformLocation(prog, 'uLightMode');
+
+    function hexToRGB(hex) {
+      hex = hex.replace('#', '');
+      return [
+        parseInt(hex.slice(0, 2), 16) / 255,
+        parseInt(hex.slice(2, 4), 16) / 255,
+        parseInt(hex.slice(4, 6), 16) / 255,
+      ];
+    }
+    const stops = initColorStops.map(hexToRGB);
+    if (uColorStops) gl.uniform3fv(uColorStops, new Float32Array(stops.flat()));
+    if (uAmplitude) gl.uniform1f(uAmplitude, initAmplitude);
+    if (uBlend) gl.uniform1f(uBlend, initBlend);
+    if (uLightMode) gl.uniform1f(uLightMode, initLightMode ? 1 : 0);
+
+    // ── 4. 尺寸（dpr 上限 2，避免高分屏白烧 GPU）──
+    let w = 0, h = 0;
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const nw = Math.max(1, Math.floor(ctn.offsetWidth * dpr));
+      const nh = Math.max(1, Math.floor(ctn.offsetHeight * dpr));
+      if (nw !== w || nh !== h) {
+        w = nw; h = nh;
+        canvas.width = w;
+        canvas.height = h;
+        gl.viewport(0, 0, w, h);
+        if (uResolution) gl.uniform2f(uResolution, w, h);
+        return true;
+      }
+      return false;
+    }
+    window.addEventListener('resize', () => { resize(); draw(); });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function draw(t) {
+      resize();
+      if (uTime) gl.uniform1f(uTime, t || 8.0);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+
+    let raf = 0;
+    let start = performance.now();
+    function frame(now) {
+      raf = requestAnimationFrame(frame);
+      // 时间累积而非直接用 now：标签页切回时不会跳变
+      draw((now - start) / 1000);
+    }
+
+    // ── 5. 页面不可见时停渲染：省电 ──
+    // 注意：切回来时必须**立即画一帧**，不能只重启 rAF。
+    // rAF 在标签页隐藏期间被吊销，若隐藏时从未渲染过（后台打开博客），
+    // 单靠重启循环要等下一帧才出图，用户会看到一瞬间空白背景。
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      } else {
+        // 先补一帧，保证切回即有画面
+        start = performance.now();
+        draw(0);
+        if (!reduce && !raf) {
+          raf = requestAnimationFrame(frame);
+        }
+      }
+    });
+
+    // 首屏也要补一帧：页面可能是后台标签页打开（rAF 根本不触发），
+    // 等用户切回来时才有第一张图。
+    draw(0);
+    if (reduce) {
+      draw(8.0);  // reduced-motion：静态一帧，不进动画循环
+    } else if (!document.hidden) {
+      raf = requestAnimationFrame(frame);
+    }
+
+    // 验证钩子：供自动化检测断言「真的画出来了」
+    ctn.dataset.ready = '1';
+  })();
+</script>
